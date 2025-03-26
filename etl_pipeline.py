@@ -11,6 +11,15 @@ files = {
     "patient_medications": "patient_medications.csv"
 }
 
+# Default values for missing data
+DEFAULT_VALUES = {
+    "age": -1,
+    "gender": "UNKNOWN",
+    "end_date": pd.Timestamp("1900-01-01").date(),
+    "test_date": pd.Timestamp("1900-01-01").date(),
+    "start_date": pd.Timestamp("1900-01-01").date(),
+}
+
 # Load CSV files
 def load_data():
     data = {}
@@ -25,15 +34,9 @@ def clean_data(data):
     for key, df in data.items():
         df.drop_duplicates(inplace=True)
 
-        if 'age' in df.columns:
-            df.fillna({'age':-1}, inplace=True)
-
-        if 'gender' in df.columns:
-            df['gender'] = df['gender'].fillna('unknown')
-            
-        if 'end_date' in df.columns:
-            df['end_date'] = pd.to_datetime(df['end_date'], errors='coerce')  
-            df.fillna({'end_date':pd.Timestamp('1900-01-01').date()}, inplace=True)
+        for col, default in DEFAULT_VALUES.items():
+            if col in df.columns:
+                df.fillna({col: default}, inplace=True)
 
         for column in df.select_dtypes(include=['object']).columns: 
              df[column] = df[column].map(lambda x: x.upper() if isinstance(x, str) else x)
@@ -49,17 +52,16 @@ def merge_data(data):
     merged_data = merged_data.merge(data["patient_lab_results"], on=["patient_id", "visit_id"], how="left")
     merged_data = merged_data.merge(data["patient_medications"], on=["patient_id", "visit_id"], how="left")
     merged_data = merged_data.merge(data["physician_assignments"], on=["patient_id", "visit_id"], how="left")
+    
     merged_data = merged_data.drop(columns=["medication_x"]).rename(columns={"medication_y": "medication"})
     merged_data = merged_data.rename(columns={"other_fields_x": "patient_demographics_other_fields", "other_fields_y": "patients_visits_other_fields"})
     merged_data = merged_data.rename(columns={"notes_x": "patient_lab_results_notes", "notes_y": "patient_medications_notes"})
     merged_data['age_group'] = merged_data['age'].apply(lambda x: '18-35' if x <= 35 else '36-65' if x <= 65 else '65+')
 
-    if 'test_date' in merged_data.columns:
-            merged_data.fillna({'test_date':pd.Timestamp('1900-01-01').date()}, inplace=True)
-    if 'start_date' in merged_data.columns:
-            merged_data.fillna({'start_date':pd.Timestamp('1900-01-01').date()}, inplace=True)
-    if 'end_date' in merged_data.columns:
-            merged_data.fillna({'end_date':pd.Timestamp('1900-01-01').date()}, inplace=True)
+    for date_column in ['test_date', 'start_date', 'end_date']:
+        if date_column in merged_data.columns:
+            merged_data.fillna({date_column: pd.Timestamp("1900-01-01").date()}, inplace=True)
+    
     return merged_data
 
 # Save cleaned and merged data

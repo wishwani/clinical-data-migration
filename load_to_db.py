@@ -22,6 +22,7 @@ def insert_patients_data(final_data):
         VALUES (%s, %s, %s, %s, %s)
     """
     patient_data = final_data[['patient_id', 'age', 'age_group', 'gender', 'patient_demographics_other_fields']].drop_duplicates().values.tolist()
+
     cursor.executemany(insert_query, patient_data)
     print(f"Inserted {len(patient_data)} records into patient_demographics.")
 
