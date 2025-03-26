@@ -38,8 +38,8 @@ Indexes are created on **foreign keys** and frequently queried columns for **per
 ### **Installation Steps**
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/your-repo/etl-clinical-data.git
-   cd etl-clinical-data
+   git clone https://github.com/wishwani/clinical-data-migration
+   cd clinical-data-migration
    ```
 2. **Install dependencies:**
    ```sh
@@ -48,7 +48,7 @@ Indexes are created on **foreign keys** and frequently queried columns for **per
 3. **Configure the database:**
    - Start PostgreSQL and create a database:
      ```sql
-     CREATE DATABASE clinical_study;
+     CREATE DATABASE clinical_data;
      ```
    - Update database connection details in `config.py`:
      ```python
