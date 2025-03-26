@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Clinical Study Data ETL Pipeline & Database Setup
 
 ## 1. Overview
@@ -124,46 +125,7 @@ Edit
 supabase start
 This will start Supabase locally using Docker. Once the services are up, you can access your Supabase project at http://localhost:54321 in your browser.
 This project provides a structured ETL pipeline and a relational database to manage clinical study data efficiently. The design ensures **data consistency, query optimization, and scalability** for further analysis and reporting.
+=======
+>>>>>>> 2514b172ed1e8ef2b5ddbd1ed9a828a283a4a2b8
 
-
-Differences in Configuration and Setup Between PostgreSQL and Supabase
-1. PostgreSQL Connection URL:
-In PostgreSQL, the connection URL typically looks like:
-
-bash
-Copy
-Edit
-postgresql://username:password@host:port/database
-Example:
-
-plaintext
-Copy
-Edit
-postgresql://postgres:Randika@localhost:5432/clinical_data
-2. Supabase Connection URL:
-In Supabase, the connection URL is similar to PostgreSQL, but the default port for Supabase’s local PostgreSQL is 54322:
-
-plaintext
-Copy
-Edit
-postgresql://postgres:postgres@127.0.0.1:54322/postgres
-3. Database Management:
-PostgreSQL: You interact with PostgreSQL via psql or any PostgreSQL-compatible client.
-
-Supabase: Supabase provides a REST API and Realtime API, and you interact with it via the Supabase dashboard or the Supabase CLI.
-
-4. Schema and Table Creation:
-Supabase uses PostgreSQL as its database engine, so schema and table creation are the same as in PostgreSQL.
-
-However, Supabase offers features like Row-Level Security (RLS) and authentication that may need to be configured separately.
-
-Running the schema.sql Script in Supabase
-1. Create the Tables in Supabase:
-First, you can create the same schema used for PostgreSQL in Supabase by running the schema.sql script. Here's how:
-
-Access Supabase SQL Editor: Once Supabase is running, go to the Supabase dashboard at http://localhost:54321.
-
-Navigate to the SQL Editor in the Supabase dashboard.
-
-Paste your schema.sql file content and run the SQL commands.
 
