@@ -39,31 +39,31 @@ Indexes are created on **foreign keys** and frequently queried columns for **per
 
 ### **Installation Steps**
 1. **Clone the repository:**
-   ```sh
+   ```
    git clone https://github.com/your-repo/etl-clinical-data.git
    cd etl-clinical-data
    ```
 2. **Install dependencies:**
-   ```sh
+   ```
    pip install pandas psycopg2 sqlalchemy
    ```
 3. **Configure the database:**
     - Login to PostgreSQL using user and password:
-     ```sql
+     ```
      psql -U postgres
      ```
      - Enter password for that user
     - create a database:
-     ```sql
+     ```
      CREATE DATABASE clinical_data;
      ```
      - Check the database
-     ```sql
+     ```
      \l
      ```
 ## 4. Running the Code
 ### **Run the ETL Pipeline**
-```sh
+```
 python etl_pipeline.py
 ```
 This will:
@@ -71,13 +71,13 @@ This will:
 - Clean and transform the data
 - Save the cleaned dataset to `data/cleaned_data.csv`
 ### **Set Up the Database**
-```sh
+```
 psql -U postgres -d clinical_data
 \i 'C:/Users/Randika/MedDataSync/sql/schema.sql' (Use your project location for schema.sql)
 ```
 This will create the necessary tables in PostgreSQL.
 ### **Load Cleaned Data into PostgreSQL**
-```sh
+```
 python load_to_db.py
 ```
 This script reads `cleaned_data.csv` and inserts it into the database.
@@ -93,7 +93,7 @@ This script reads `cleaned_data.csv` and inserts it into the database.
 1. **Install Docker**: If you haven't installed Docker, follow the steps from the Docker website linked above.
 2. **Install Supabase CLI**:
    After installing Docker, you need the Supabase CLI to run Supabase locally. Install the CLI using the following commands:
-   ```bash
+   ```
    npm install -g supabase
    ```
 For further installation details, visit Supabase CLI Installation.
@@ -101,13 +101,11 @@ For further installation details, visit Supabase CLI Installation.
 3. **Initialize Supabase**: 
 navigate to the directory where you want to store your Supabase project and run:
 ```
-bash
 supabase init
 ```
 This will create a new Supabase project in your directory.
 Start Supabase: To start the Supabase services (including PostgreSQL and the Supabase API), use the following command:
 ```
-bash
 supabase start
 ```
 This will start Supabase locally using Docker. Once the services are up, you can access your Supabase project at http://localhost:54323/project/default in your browser.
@@ -159,12 +157,11 @@ This project provides a structured ETL pipeline and a relational database to man
 
 """
 
-Create the Tables in Supabase: 
+## Create the Tables in Supabase: 
 
 Use the same created for PostgreSQL in Supabase by running the schema.sql script. 
 
-Run the Python script: For data loading to supabase
+## Run the Python script: For data loading to supabase
 ```
-bash
 python python_integration.py
 ```
