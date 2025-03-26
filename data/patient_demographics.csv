@@ -1,0 +1,11 @@
+patient_id,age,gender,other_fields
+P001,34,Male,Non-smoker
+P002,28,Female,Diabetic
+P003,45,,Hypertension
+P004,50,Male,
+P005,29,Female,Obese
+P006,,Male,Asthmatic
+P007,38,Female,
+P008,60,Male,Smoker
+P009,22,Female,Healthy
+P010,40,Male,

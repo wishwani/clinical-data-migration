@@ -1,0 +1,15 @@
+patient_id,medication_id,visit_id,medication,dosage,start_date,end_date,notes
+P001,M001,V001,Sertraline,50mg,2023-01-15,2023-02-15,Initial prescription
+P001,M002,V002,Sertraline,75mg,2023-02-20,2023-03-20,Increased dosage
+P002,M003,V003,Escitalopram,10mg,2023-03-05,2023-04-05,
+P003,M004,V004,Lithium,300mg,2023-01-10,2023-02-10,Regular monitoring required
+P005,M005,V006,Fluoxetine,20mg,2023-02-25,2023-03-25,Patient improved
+P006,M006,V007,Risperidone,2mg,2023-03-15,2023-04-15,
+P007,M007,V008,Alprazolam,0.5mg,2023-03-20,2023-04-20,For anxiety
+P008,M008,V009,Paroxetine,20mg,2023-04-01,2023-05-01,
+P009,M009,V010,Sertraline,50mg,2023-04-05,2023-05-05,
+P010,M010,V011,Buspirone,15mg,2023-01-25,2023-02-25,Initial treatment
+P003,M011,V012,Lithium,300mg,2023-05-10,2023-06-10,Review dosage
+P002,M012,V013,Sertraline,50mg,2023-05-20,2023-06-20,
+P004,M013,V014,Olanzapine,5mg,2023-06-01,2023-07-01,New prescription
+P007,M014,V015,Alprazolam,0.5mg,2023-06-15,2023-07-15,For emergency

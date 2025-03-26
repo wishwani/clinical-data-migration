@@ -1,0 +1,16 @@
+patient_id,visit_id,visit_date,diagnosis,medication,other_fields
+P001,V001,2023-01-15,Depression,Sertraline,Initial assessment
+P001,V002,2023-02-20,Depression,,Follow-up
+P002,V003,2023-03-05,Anxiety,Escitalopram,
+P003,V004,2023-01-10,Bipolar Disorder,Lithium,Stabilizing dose
+P004,V005,2023-04-12,,N/A,Routine check-up
+P005,V006,2023-02-25,Depression,Fluoxetine,Patient improved
+P006,V007,2023-03-15,Schizophrenia,Risperidone,
+P007,V008,2023-03-20,Anxiety,,Follow-up visit
+P008,V009,2023-04-01,PTSD,Paroxetine,
+P009,V010,2023-04-05,Depression,Sertraline,Routine check
+P010,V011,2023-01-25,Anxiety,Buspirone,New patient
+P003,V012,2023-05-10,Bipolar Disorder,,Medication review
+P002,V013,2023-05-20,Depression,Sertraline,Follow-up
+P004,V014,2023-06-01,Schizophrenia,Olanzapine,
+P007,V015,2023-06-15,Anxiety,Alprazolam,Emergency visit

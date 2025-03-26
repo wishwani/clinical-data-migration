@@ -1,0 +1,16 @@
+patient_id,visit_id,physician_id,physician_name,assignment_date,department
+P001,V001,PH001,Dr. Smith,2023-01-15,Psychiatry
+P001,V002,PH002,Dr. Johnson,2023-02-20,General Medicine
+P002,V003,PH003,Dr. Lee,2023-03-05,Psychiatry
+P003,V004,PH004,Dr. Patel,2023-01-10,Psychiatry
+P004,V005,PH005,Dr. Brown,2023-04-12,General Medicine
+P005,V006,PH006,Dr. Davis,2023-02-25,Psychiatry
+P006,V007,PH007,Dr. Wilson,2023-03-15,Psychiatry
+P007,V008,PH003,Dr. Lee,2023-03-20,Psychiatry
+P008,V009,PH008,Dr. Taylor,2023-04-01,Psychiatry
+P009,V010,PH002,Dr. Johnson,2023-04-05,General Medicine
+P010,V011,PH009,Dr. Martinez,2023-01-25,Psychiatry
+P003,V012,PH004,Dr. Patel,2023-05-10,Psychiatry
+P002,V013,PH001,Dr. Smith,2023-05-20,Psychiatry
+P004,V014,PH005,Dr. Brown,2023-06-01,General Medicine
+P007,V015,PH010,Dr. Thompson,2023-06-15,Emergency

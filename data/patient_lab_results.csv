@@ -1,0 +1,11 @@
+patient_id,lab_test_id,visit_id,test_date,test_name,result_value,result_unit,reference_range,notes
+P001,L001,V001,2023-01-16,Blood Glucose,105,mg/dL,"70-110",Normal
+P001,L002,V002,2023-02-21,Cholesterol,,mg/dL,"125-200",Missing result
+P002,L003,V003,2023-03-06,Hemoglobin,13.5,g/dL,"12-16","Slightly low"
+P003,L004,V004,2023-01-11,Blood Glucose,115,mg/dL,"70-110",High
+P004,L005,V005,2023-04-13,Cholesterol,190,mg/dL,"125-200",Normal
+P005,L006,V006,2023-02-26,Hemoglobin,,g/dL,"12-16",
+P006,L007,V007,2023-03-16,Blood Glucose,90,mg/dL,"70-110",
+P007,L008,V008,2023-03-21,Cholesterol,205,mg/dL,"125-200","Above normal"
+P008,L009,V009,2023-04-02,Hemoglobin,14,g/dL,"12-16",
+P010,L010,V011,2023-01-26,Blood Glucose,100,mg/dL,"70-110",Normal
