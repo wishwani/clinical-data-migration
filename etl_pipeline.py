@@ -1,5 +1,8 @@
+import sys
 import pandas as pd
 import os
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
 
 # File paths
 base_path = "data/"
@@ -53,7 +56,8 @@ def merge_data(data):
     merged_data = merged_data.merge(data["patient_medications"], on=["patient_id", "visit_id"], how="left")
     merged_data = merged_data.merge(data["physician_assignments"], on=["patient_id", "visit_id"], how="left")
     
-    merged_data = merged_data.drop(columns=["medication_x"]).rename(columns={"medication_y": "medication"})
+    if "medication_x" in merged_data.columns:
+        merged_data = merged_data.drop(columns=["medication_x"]).rename(columns={"medication_y": "medication"})
     merged_data = merged_data.rename(columns={"other_fields_x": "patient_demographics_other_fields", "other_fields_y": "patients_visits_other_fields"})
     merged_data = merged_data.rename(columns={"notes_x": "patient_lab_results_notes", "notes_y": "patient_medications_notes"})
     merged_data['age_group'] = merged_data['age'].apply(lambda x: '18-35' if x <= 35 else '36-65' if x <= 65 else '65+')

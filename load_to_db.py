@@ -16,7 +16,7 @@ conn = psycopg2.connect(
 cursor = conn.cursor()
 
 # Insert data into the patients table
-def insert_patients_data(final_data):
+def insert_patients_data(cursor, final_data):
     insert_query = """
         INSERT INTO patient_demographics (patient_id, age, age_group, gender, patient_demographics_other_fields)
         VALUES (%s, %s, %s, %s, %s)
@@ -27,7 +27,7 @@ def insert_patients_data(final_data):
     print(f"Inserted {len(patient_data)} records into patient_demographics.")
 
 # Insert data into the visits table
-def insert_visits_data(final_data):
+def insert_visits_data(cursor, final_data):
     insert_query = """
         INSERT INTO patient_visits (patient_id, visit_id, visit_date, diagnosis, medication, patients_visits_other_fields)
         VALUES (%s, %s, %s, %s, %s, %s)
@@ -39,7 +39,7 @@ def insert_visits_data(final_data):
     print(f"Inserted {len(visit_data)} records into patient_visits.")
 
 # Insert data into the lab results table
-def insert_lab_results_data(final_data):
+def insert_lab_results_data(cursor, final_data):
     insert_query = """
         INSERT INTO patient_lab_results (patient_id, visit_id, lab_test_id, test_date, test_name, result_value, result_unit, reference_range, notes)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
@@ -50,7 +50,7 @@ def insert_lab_results_data(final_data):
     print(f"Inserted {len(lab_results_data)} records into patient_lab_results.")
 
 # Insert data into the medications table
-def insert_medications_data(final_data):
+def insert_medications_data(cursor, final_data):
     insert_query = """
         INSERT INTO patient_medications (patient_id, medication_id, visit_id, medication, dosage, start_date, end_date, notes)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
@@ -61,7 +61,7 @@ def insert_medications_data(final_data):
     print(f"Inserted {len(medications_data)} records into patient_medications.")
 
 # Insert data into the physician assignments table
-def insert_physician_assignments_data(final_data):
+def insert_physician_assignments_data(cursor, final_data):
     insert_query = """
         INSERT INTO physician_assignments (patient_id, visit_id, physician_id, physician_name, assignment_date, department)
         VALUES (%s, %s, %s, %s, %s, %s)
@@ -76,11 +76,11 @@ def insert_physician_assignments_data(final_data):
 
 def load_data_to_postgresql():
     try:
-        insert_patients_data(final_data)
-        insert_visits_data(final_data)
-        insert_lab_results_data(final_data)
-        insert_medications_data(final_data)
-        insert_physician_assignments_data(final_data)
+        insert_patients_data(cursor, final_data)
+        insert_visits_data(cursor, final_data)
+        insert_lab_results_data(cursor, final_data)
+        insert_medications_data(cursor, final_data)
+        insert_physician_assignments_data(cursor,final_data)
 
         conn.commit()
         print("Data inserted successfully into all tables!")
