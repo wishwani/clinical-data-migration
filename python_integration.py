@@ -67,22 +67,53 @@ def get_visits_per_patient():
     """
     conn = connect_postgres()
     df = execute_query(query, conn)
-    conn.close()
+    df.to_csv(f'outputs/visits_per_patient.csv', index=False)
+    return df
+
+# Filter patients by diagnosis and visit date range
+def get_patients_by_diagnoise_or_visit_date():
+    diagnosis = 'Depression'
+    start_date = '2023-01-01'
+    end_date = '2023-12-31'
+    query = f"""
+    SELECT * 
+    FROM patient_visits
+    WHERE diagnosis = '{diagnosis}'
+    OR visit_date BETWEEN '{start_date}' AND '{end_date}';
+    """
+
+    conn = connect_postgres()
+    df = execute_query(query, conn)
+    df.to_csv(f'outputs/filtered_patients_by_diagnosis.csv', index=False)
+    return df
+
+# Aggregate number of visits per month
+def get_avg_visits_per_month():
+    query = """
+    SELECT EXTRACT(MONTH FROM visit_date) AS visit_month, COUNT(*) AS number_of_visits
+    FROM patient_visits
+    GROUP BY EXTRACT(MONTH FROM visit_date)
+    ORDER BY visit_month;
+    """
+    conn = connect_postgres()
+    df = execute_query(query, conn)
+    df.to_csv(f'outputs/visits_per_month.csv')
     return df
 
 # Average visits per patient
 def get_avg_visits_per_patient():
     query = """
     SELECT patient_id, 
-           COUNT(*) AS number_of_visits,
-           AVG(COUNT(*)) OVER () AS avg_visits_per_patient
+       COUNT(*) AS number_of_visits,
+       AVG(COUNT(*)) OVER () AS avg_visits_per_patient
     FROM patient_visits
     GROUP BY patient_id
-    HAVING COUNT(*) > 1
+    HAVING COUNT(*) >= 1  
     ORDER BY patient_id;
     """
     conn = connect_postgres()
     df = execute_query(query, conn)
+    df.to_csv(f'outputs/avg_visits_per_patient.csv')
     return df
 
 # Migrate data
@@ -99,9 +130,19 @@ def migrate_data():
 
 if __name__ == '__main__':
     try:
-        print("Fetching average visits per patient...")
+        visits_per_patient_df = get_visits_per_patient()
+        print(visits_per_patient_df)
+
+        patients_by_diagnoise_or_visit_date_df = get_patients_by_diagnoise_or_visit_date()
+        print(patients_by_diagnoise_or_visit_date_df)
+        
         avg_visits_per_patient_df = get_avg_visits_per_patient()
         print(avg_visits_per_patient_df)
+        
+
+        avg_visits_per_month_df = get_avg_visits_per_month()
+        print(avg_visits_per_month_df)
+       
         
         logging.info("Starting data migration process...")
         migrate_data()
