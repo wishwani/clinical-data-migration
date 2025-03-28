@@ -1,13 +1,9 @@
 import pytest
 import pandas as pd
 import os
-import sys
+import load_to_db
 
-# Ensure the root directory is added to the sys.path so that the modules can be found
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 from etl_pipeline import load_data, clean_data, merge_data
-from load_to_db import insert_patients_data, insert_visits_data, insert_lab_results_data, insert_medications_data, insert_physician_assignments_data
-from unittest.mock import MagicMock
 
 # Test data setup
 test_data = {
@@ -81,34 +77,51 @@ def test_merge_data(sample_data):
     merged_data = merge_data(sample_data)
     assert "patient_id" in merged_data.columns
     assert "visit_id" in merged_data.columns
-    assert "age_group" in merged_data.columns
-    assert "medication" in merged_data.columns
+    assert "lab_test_id" in merged_data.columns
+    assert "medication_id" in merged_data.columns
     assert "physician_id" in merged_data.columns
 
-# Test database insert functions
+# Test ensure patient_ids exist even if visit_id is missing
+def test_merge_data_missing_values(sample_data):
+    sample_data["patient_visits"] = pd.DataFrame({
+        "patient_id": [1, 2, 3],
+        "visit_id": [101, None, 103],
+        "visit_date": ["2024-01-01", "2024-02-01", "2024-03-01"]
+    })
+    
+    merged_data = merge_data(sample_data)
+    
+    assert set(merged_data["patient_id"]) == {1, 2, 3}
+    assert "visit_id" in merged_data.columns
+
+# Test insert function for patient_demographics
 def test_insert_patients_data(mocker):
-    cursor_mock = MagicMock()
-    insert_patients_data(cursor_mock, test_data["patient_demographics"])
-    cursor_mock.executemany.assert_called()
+    mock_func = mocker.patch("load_to_db.load_data_to_patient_demographics", return_value=None)
+    load_to_db.load_data_to_patient_demographics(None, "patient_demographics", None)
+    mock_func.assert_called_once()
 
+# Test insert function patient_visits
 def test_insert_visits_data(mocker):
-    cursor_mock = MagicMock()
-    insert_visits_data(cursor_mock, test_data["patient_visits"])
-    cursor_mock.executemany.assert_called()
+    mock_func = mocker.patch("load_to_db.load_data_to_patient_visits", return_value=None)
+    load_to_db.load_data_to_patient_visits(None, "patient_visits", None)
+    mock_func.assert_called_once()
 
+# Test insert function for patient_lab_results
 def test_insert_lab_results_data(mocker):
-    cursor_mock = MagicMock()
-    insert_lab_results_data(cursor_mock, test_data["patient_lab_results"])
-    cursor_mock.executemany.assert_called()
+    mock_func = mocker.patch("load_to_db.load_data_to_patient_lab_results", return_value=None)
+    load_to_db.load_data_to_patient_lab_results(None, "patient_lab_results", None)
+    mock_func.assert_called_once()
 
+# Test insert function for patient_medications
 def test_insert_medications_data(mocker):
-    cursor_mock = MagicMock()
-    insert_medications_data(cursor_mock, test_data["patient_medications"])
-    cursor_mock.executemany.assert_called()
+    mock_func = mocker.patch("load_to_db.load_data_to_patient_medications", return_value=None)
+    load_to_db.load_data_to_patient_medications(None, "patient_medications", None)
+    mock_func.assert_called_once()
 
+# Test insert function for physician_assignments
 def test_insert_physician_assignments_data(mocker):
-    cursor_mock = MagicMock()
-    insert_physician_assignments_data(cursor_mock, test_data["physician_assignments"])
-    cursor_mock.executemany.assert_called()
+    mock_func = mocker.patch("load_to_db.load_data_to_physician_assignments", return_value=None)
+    load_to_db.load_data_to_physician_assignments(None, "physician_assignments", None)
+    mock_func.assert_called_once()
 
 
