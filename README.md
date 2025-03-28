@@ -40,8 +40,8 @@ Indexes are created on **foreign keys** and frequently queried columns for **per
 ### **Installation Steps**
 1. **Clone the repository:**
    ```
-   git clone https://github.com/your-repo/etl-clinical-data.git
-   cd etl-clinical-data
+   git clone https://github.com/wishwani/clinical-data-migration.git
+   cd clinical-data-migration
    ```
 2. **Install dependencies:**
    ```
