@@ -66,3 +66,257 @@
 2025-03-29 10:35:46,928 - INFO - Successfully connected to Supabase.
 2025-03-29 10:35:46,987 - INFO - Data inserted into physician_assignments successfully in Supabase.
 2025-03-29 10:35:46,987 - INFO - Migration completed for physician_assignments.
+2025-03-29 16:40:31,612 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 16:40:31,784 - INFO - Query executed successfully: 
+    SELECT patient_id, COUNT(*) AS number_of_visits
+    FROM patient_visits
+    GROUP BY patient_id
+    HAVING COUNT(*) > 1;
+    
+2025-03-29 16:40:31,797 - INFO - Saved visits per patient data to CSV.
+2025-03-29 16:40:31,816 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 16:40:31,891 - INFO - Query executed successfully: 
+    SELECT * 
+    FROM patient_visits
+    WHERE diagnosis = 'Depression'
+    OR visit_date BETWEEN '2023-01-01' AND '2023-12-31';
+    
+2025-03-29 16:40:31,899 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 16:40:31,963 - INFO - Query executed successfully: 
+    SELECT patient_id, 
+       COUNT(*) AS number_of_visits,
+       AVG(COUNT(*)) OVER () AS avg_visits_per_patient
+    FROM patient_visits
+    GROUP BY patient_id
+    HAVING COUNT(*) >= 1  
+    ORDER BY patient_id;
+    
+2025-03-29 16:40:31,964 - INFO - Saved average visits per patient data to CSV.
+2025-03-29 16:40:31,971 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 16:40:32,027 - INFO - Query executed successfully: 
+    SELECT EXTRACT(MONTH FROM visit_date) AS visit_month, COUNT(*) AS number_of_visits
+    FROM patient_visits
+    GROUP BY EXTRACT(MONTH FROM visit_date)
+    ORDER BY visit_month;
+    
+2025-03-29 16:40:32,030 - INFO - Starting migration for data_migration.patient_demographics...
+2025-03-29 16:40:32,031 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 16:40:32,077 - ERROR - Error executing query: (psycopg2.errors.UndefinedTable) relation "data_migration.patient_demographics" does not exist
+LINE 1: SELECT * FROM data_migration.patient_demographics;
+                      ^
+
+[SQL: SELECT * FROM data_migration.patient_demographics;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-29 16:40:32,077 - INFO - Fetched data from PostgreSQL table data_migration.patient_demographics.
+2025-03-29 16:40:32,077 - INFO - Successfully connected to Supabase.
+2025-03-29 16:40:32,077 - ERROR - Error inserting data into Supabase table data_migration.patient_demographics: 'NoneType' object has no attribute 'to_sql'
+2025-03-29 16:40:32,077 - INFO - Migration completed for data_migration.patient_demographics.
+2025-03-29 16:40:32,077 - INFO - Starting migration for data_migration.patient_visits...
+2025-03-29 16:40:32,078 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 16:40:32,124 - ERROR - Error executing query: (psycopg2.errors.UndefinedTable) relation "data_migration.patient_visits" does not exist
+LINE 1: SELECT * FROM data_migration.patient_visits;
+                      ^
+
+[SQL: SELECT * FROM data_migration.patient_visits;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-29 16:40:32,124 - INFO - Fetched data from PostgreSQL table data_migration.patient_visits.
+2025-03-29 16:40:32,125 - INFO - Successfully connected to Supabase.
+2025-03-29 16:40:32,125 - ERROR - Error inserting data into Supabase table data_migration.patient_visits: 'NoneType' object has no attribute 'to_sql'
+2025-03-29 16:40:32,125 - INFO - Migration completed for data_migration.patient_visits.
+2025-03-29 16:40:32,125 - INFO - Starting migration for data_migration.patient_lab_results...
+2025-03-29 16:40:32,125 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 16:40:32,184 - ERROR - Error executing query: (psycopg2.errors.UndefinedTable) relation "data_migration.patient_lab_results" does not exist
+LINE 1: SELECT * FROM data_migration.patient_lab_results;
+                      ^
+
+[SQL: SELECT * FROM data_migration.patient_lab_results;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-29 16:40:32,184 - INFO - Fetched data from PostgreSQL table data_migration.patient_lab_results.
+2025-03-29 16:40:32,185 - INFO - Successfully connected to Supabase.
+2025-03-29 16:40:32,185 - ERROR - Error inserting data into Supabase table data_migration.patient_lab_results: 'NoneType' object has no attribute 'to_sql'
+2025-03-29 16:40:32,185 - INFO - Migration completed for data_migration.patient_lab_results.
+2025-03-29 16:40:32,185 - INFO - Starting migration for data_migration.patient_medications...
+2025-03-29 16:40:32,186 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 16:40:32,238 - ERROR - Error executing query: (psycopg2.errors.UndefinedTable) relation "data_migration.patient_medications" does not exist
+LINE 1: SELECT * FROM data_migration.patient_medications;
+                      ^
+
+[SQL: SELECT * FROM data_migration.patient_medications;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-29 16:40:32,238 - INFO - Fetched data from PostgreSQL table data_migration.patient_medications.
+2025-03-29 16:40:32,239 - INFO - Successfully connected to Supabase.
+2025-03-29 16:40:32,239 - ERROR - Error inserting data into Supabase table data_migration.patient_medications: 'NoneType' object has no attribute 'to_sql'
+2025-03-29 16:40:32,239 - INFO - Migration completed for data_migration.patient_medications.
+2025-03-29 16:40:32,239 - INFO - Starting migration for data_migration.physician_assignments...
+2025-03-29 16:40:32,239 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 16:40:32,283 - ERROR - Error executing query: (psycopg2.errors.UndefinedTable) relation "data_migration.physician_assignments" does not exist
+LINE 1: SELECT * FROM data_migration.physician_assignments;
+                      ^
+
+[SQL: SELECT * FROM data_migration.physician_assignments;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-29 16:40:32,283 - INFO - Fetched data from PostgreSQL table data_migration.physician_assignments.
+2025-03-29 16:40:32,284 - INFO - Successfully connected to Supabase.
+2025-03-29 16:40:32,284 - ERROR - Error inserting data into Supabase table data_migration.physician_assignments: 'NoneType' object has no attribute 'to_sql'
+2025-03-29 16:40:32,284 - INFO - Migration completed for data_migration.physician_assignments.
+2025-03-29 17:03:13,740 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:03:13,821 - INFO - Query executed successfully: 
+    SELECT patient_id, COUNT(*) AS number_of_visits
+    FROM patient_visits
+    GROUP BY patient_id
+    HAVING COUNT(*) > 1;
+    
+2025-03-29 17:03:13,828 - INFO - Saved visits per patient data to CSV.
+2025-03-29 17:03:13,835 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:03:14,007 - INFO - Query executed successfully: 
+    SELECT * 
+    FROM patient_visits
+    WHERE diagnosis = 'Depression'
+    OR visit_date BETWEEN '2023-01-01' AND '2023-12-31';
+    
+2025-03-29 17:03:14,015 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:03:14,070 - INFO - Query executed successfully: 
+    SELECT patient_id, 
+       COUNT(*) AS number_of_visits,
+       AVG(COUNT(*)) OVER () AS avg_visits_per_patient
+    FROM patient_visits
+    GROUP BY patient_id
+    HAVING COUNT(*) >= 1  
+    ORDER BY patient_id;
+    
+2025-03-29 17:03:14,072 - INFO - Saved average visits per patient data to CSV.
+2025-03-29 17:03:14,077 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:03:14,137 - INFO - Query executed successfully: 
+    SELECT EXTRACT(MONTH FROM visit_date) AS visit_month, COUNT(*) AS number_of_visits
+    FROM patient_visits
+    GROUP BY EXTRACT(MONTH FROM visit_date)
+    ORDER BY visit_month;
+    
+2025-03-29 17:03:14,142 - INFO - Starting migration for data_migration.patient_demographics...
+2025-03-29 17:03:14,142 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:03:14,189 - ERROR - Error executing query: (psycopg2.errors.UndefinedTable) relation "data_migration.patient_demographics" does not exist
+LINE 1: SELECT * FROM data_migration.patient_demographics;
+                      ^
+
+[SQL: SELECT * FROM data_migration.patient_demographics;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-29 17:03:14,189 - INFO - Fetched data from PostgreSQL table data_migration.patient_demographics.
+2025-03-29 17:03:14,190 - INFO - Successfully connected to Supabase.
+2025-03-29 17:03:14,190 - ERROR - Error inserting data into Supabase table data_migration.patient_demographics: 'NoneType' object has no attribute 'to_sql'
+2025-03-29 17:03:14,190 - INFO - Migration completed for data_migration.patient_demographics.
+2025-03-29 17:03:14,190 - INFO - Starting migration for data_migration.patient_visits...
+2025-03-29 17:03:14,191 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:03:14,240 - ERROR - Error executing query: (psycopg2.errors.UndefinedTable) relation "data_migration.patient_visits" does not exist
+LINE 1: SELECT * FROM data_migration.patient_visits;
+                      ^
+
+[SQL: SELECT * FROM data_migration.patient_visits;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-29 17:03:14,240 - INFO - Fetched data from PostgreSQL table data_migration.patient_visits.
+2025-03-29 17:03:14,241 - INFO - Successfully connected to Supabase.
+2025-03-29 17:03:14,241 - ERROR - Error inserting data into Supabase table data_migration.patient_visits: 'NoneType' object has no attribute 'to_sql'
+2025-03-29 17:03:14,241 - INFO - Migration completed for data_migration.patient_visits.
+2025-03-29 17:03:14,241 - INFO - Starting migration for data_migration.patient_lab_results...
+2025-03-29 17:03:14,242 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:03:14,283 - ERROR - Error executing query: (psycopg2.errors.UndefinedTable) relation "data_migration.patient_lab_results" does not exist
+LINE 1: SELECT * FROM data_migration.patient_lab_results;
+                      ^
+
+[SQL: SELECT * FROM data_migration.patient_lab_results;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-29 17:03:14,283 - INFO - Fetched data from PostgreSQL table data_migration.patient_lab_results.
+2025-03-29 17:03:14,283 - INFO - Successfully connected to Supabase.
+2025-03-29 17:03:14,284 - ERROR - Error inserting data into Supabase table data_migration.patient_lab_results: 'NoneType' object has no attribute 'to_sql'
+2025-03-29 17:03:14,284 - INFO - Migration completed for data_migration.patient_lab_results.
+2025-03-29 17:03:14,284 - INFO - Starting migration for data_migration.patient_medications...
+2025-03-29 17:03:14,284 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:03:14,333 - ERROR - Error executing query: (psycopg2.errors.UndefinedTable) relation "data_migration.patient_medications" does not exist
+LINE 1: SELECT * FROM data_migration.patient_medications;
+                      ^
+
+[SQL: SELECT * FROM data_migration.patient_medications;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-29 17:03:14,334 - INFO - Fetched data from PostgreSQL table data_migration.patient_medications.
+2025-03-29 17:03:14,334 - INFO - Successfully connected to Supabase.
+2025-03-29 17:03:14,334 - ERROR - Error inserting data into Supabase table data_migration.patient_medications: 'NoneType' object has no attribute 'to_sql'
+2025-03-29 17:03:14,334 - INFO - Migration completed for data_migration.patient_medications.
+2025-03-29 17:03:14,334 - INFO - Starting migration for data_migration.physician_assignments...
+2025-03-29 17:03:14,335 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:03:14,377 - ERROR - Error executing query: (psycopg2.errors.UndefinedTable) relation "data_migration.physician_assignments" does not exist
+LINE 1: SELECT * FROM data_migration.physician_assignments;
+                      ^
+
+[SQL: SELECT * FROM data_migration.physician_assignments;]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-29 17:03:14,377 - INFO - Fetched data from PostgreSQL table data_migration.physician_assignments.
+2025-03-29 17:03:14,377 - INFO - Successfully connected to Supabase.
+2025-03-29 17:03:14,377 - ERROR - Error inserting data into Supabase table data_migration.physician_assignments: 'NoneType' object has no attribute 'to_sql'
+2025-03-29 17:03:14,377 - INFO - Migration completed for data_migration.physician_assignments.
+2025-03-29 17:15:46,526 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:15:46,582 - INFO - Query executed successfully: 
+    SELECT patient_id, COUNT(*) AS number_of_visits
+    FROM patient_visits
+    GROUP BY patient_id
+    HAVING COUNT(*) > 1;
+    
+2025-03-29 17:15:46,587 - INFO - Saved visits per patient data to CSV.
+2025-03-29 17:15:46,591 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:15:46,645 - INFO - Query executed successfully: 
+    SELECT * 
+    FROM patient_visits
+    WHERE diagnosis = 'Depression'
+    OR visit_date BETWEEN '2023-01-01' AND '2023-12-31';
+    
+2025-03-29 17:15:46,652 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:15:46,702 - INFO - Query executed successfully: 
+    SELECT patient_id, 
+       COUNT(*) AS number_of_visits,
+       AVG(COUNT(*)) OVER () AS avg_visits_per_patient
+    FROM patient_visits
+    GROUP BY patient_id
+    HAVING COUNT(*) >= 1  
+    ORDER BY patient_id;
+    
+2025-03-29 17:15:46,703 - INFO - Saved average visits per patient data to CSV.
+2025-03-29 17:15:46,707 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:15:46,755 - INFO - Query executed successfully: 
+    SELECT EXTRACT(MONTH FROM visit_date) AS visit_month, COUNT(*) AS number_of_visits
+    FROM patient_visits
+    GROUP BY EXTRACT(MONTH FROM visit_date)
+    ORDER BY visit_month;
+    
+2025-03-29 17:15:46,759 - INFO - Starting migration for patient_demographics...
+2025-03-29 17:15:46,759 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:15:46,818 - INFO - Query executed successfully: SELECT * FROM patient_demographics;
+2025-03-29 17:15:46,818 - INFO - Fetched data from PostgreSQL table patient_demographics.
+2025-03-29 17:15:46,819 - INFO - Successfully connected to Supabase.
+2025-03-29 17:15:46,855 - INFO - Data inserted into patient_demographics successfully in Supabase.
+2025-03-29 17:15:46,855 - INFO - Migration completed for patient_demographics.
+2025-03-29 17:15:46,855 - INFO - Starting migration for patient_visits...
+2025-03-29 17:15:46,855 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:15:46,910 - INFO - Query executed successfully: SELECT * FROM patient_visits;
+2025-03-29 17:15:46,910 - INFO - Fetched data from PostgreSQL table patient_visits.
+2025-03-29 17:15:46,911 - INFO - Successfully connected to Supabase.
+2025-03-29 17:15:46,957 - INFO - Data inserted into patient_visits successfully in Supabase.
+2025-03-29 17:15:46,957 - INFO - Migration completed for patient_visits.
+2025-03-29 17:15:46,958 - INFO - Starting migration for patient_lab_results...
+2025-03-29 17:15:46,958 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:15:47,117 - INFO - Query executed successfully: SELECT * FROM patient_lab_results;
+2025-03-29 17:15:47,117 - INFO - Fetched data from PostgreSQL table patient_lab_results.
+2025-03-29 17:15:47,118 - INFO - Successfully connected to Supabase.
+2025-03-29 17:15:47,157 - INFO - Data inserted into patient_lab_results successfully in Supabase.
+2025-03-29 17:15:47,157 - INFO - Migration completed for patient_lab_results.
+2025-03-29 17:15:47,157 - INFO - Starting migration for patient_medications...
+2025-03-29 17:15:47,158 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:15:47,224 - INFO - Query executed successfully: SELECT * FROM patient_medications;
+2025-03-29 17:15:47,224 - INFO - Fetched data from PostgreSQL table patient_medications.
+2025-03-29 17:15:47,225 - INFO - Successfully connected to Supabase.
+2025-03-29 17:15:47,283 - INFO - Data inserted into patient_medications successfully in Supabase.
+2025-03-29 17:15:47,283 - INFO - Migration completed for patient_medications.
+2025-03-29 17:15:47,284 - INFO - Starting migration for physician_assignments...
+2025-03-29 17:15:47,285 - INFO - Successfully connected to PostgreSQL.
+2025-03-29 17:15:47,345 - INFO - Query executed successfully: SELECT * FROM physician_assignments;
+2025-03-29 17:15:47,345 - INFO - Fetched data from PostgreSQL table physician_assignments.
+2025-03-29 17:15:47,346 - INFO - Successfully connected to Supabase.
+2025-03-29 17:15:47,374 - INFO - Data inserted into physician_assignments successfully in Supabase.
+2025-03-29 17:15:47,374 - INFO - Migration completed for physician_assignments.

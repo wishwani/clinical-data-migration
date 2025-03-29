@@ -55,7 +55,7 @@ def fetch_data_from_postgres(table_name):
 def insert_data_into_supabase(df, table_name):
     try:
         engine = connect_supabase()
-        df.to_sql(table_name, engine, if_exists='append', index=False) 
+        df.to_sql(table_name, engine, if_exists='append', index=False, schema="data_migration") 
         logging.info(f"Data inserted into {table_name} successfully in Supabase.")
     except Exception as e:
         logging.error(f"Error inserting data into Supabase table {table_name}: {e}")
@@ -137,7 +137,7 @@ def get_avg_visits_per_patient():
 
 # Migrate data
 def migrate_data():
-    tables_to_migrate = ['patient_demographics', 'patient_visits', 'patient_lab_results', 'patient_medications', 'physician_assignments']  # Add all your table names here
+    tables_to_migrate = ['patient_demographics', 'patient_visits', 'patient_lab_results', 'patient_medications', 'physician_assignments']  
 
     for table in tables_to_migrate:
         try:
