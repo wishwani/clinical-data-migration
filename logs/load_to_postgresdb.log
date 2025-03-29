@@ -1,0 +1,7 @@
+2025-03-29 10:22:26,266 - INFO - Successfully loaded cleaned_data.csv
+2025-03-29 10:22:26,337 - INFO - Database connection established successfully.
+2025-03-29 10:22:26,452 - INFO - Data inserted successfully into patient_demographics
+2025-03-29 10:22:26,462 - INFO - Data inserted successfully into patient_visits
+2025-03-29 10:22:26,473 - INFO - Data inserted successfully into patient_lab_results
+2025-03-29 10:22:26,481 - INFO - Data inserted successfully into patient_medications
+2025-03-29 10:22:26,490 - INFO - Data inserted successfully into physician_assignments

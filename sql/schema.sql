@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS patient_demographics (
     patient_id VARCHAR(10) PRIMARY KEY,
     age INT CHECK (age >= -1),
-    age_group VARCHAR(10) CHECK (age_group IN ('18<','18-35', '36-65', '65+')),
+    age_group VARCHAR(10) CHECK (age_group IN ('18<','18-35', '36-65', '65+', 'UNKNOWN')),
     gender VARCHAR(10) CHECK (gender IN ('MALE', 'FEMALE', 'UNKNOWN')),
     patient_demographics_other_fields TEXT
 );
