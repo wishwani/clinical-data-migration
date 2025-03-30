@@ -163,5 +163,5 @@ Use the same created for PostgreSQL in Supabase by running the schema.sql script
 
 ## Run the Python script: For data loading to supabase
 ```
-python python_integration.py
+python load_to_supabasedb.py
 ```
