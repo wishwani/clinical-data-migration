@@ -5,3 +5,155 @@
 2025-03-29 10:22:26,473 - INFO - Data inserted successfully into patient_lab_results
 2025-03-29 10:22:26,481 - INFO - Data inserted successfully into patient_medications
 2025-03-29 10:22:26,490 - INFO - Data inserted successfully into physician_assignments
+2025-03-30 14:31:19,817 - INFO - Successfully loaded cleaned_data.csv
+2025-03-30 14:31:20,117 - INFO - Database connection established successfully.
+2025-03-30 14:31:20,453 - INFO - Data inserted successfully into patient_demographics
+2025-03-30 14:31:20,467 - INFO - Data inserted successfully into patient_visits
+2025-03-30 14:31:20,480 - INFO - Data inserted successfully into patient_lab_results
+2025-03-30 14:31:20,490 - INFO - Data inserted successfully into patient_medications
+2025-03-30 14:31:20,497 - INFO - Data inserted successfully into physician_assignments
+2025-03-30 22:13:30,816 - INFO - Successfully loaded cleaned_data.csv
+2025-03-30 22:13:31,251 - INFO - Database connection established successfully.
+2025-03-30 22:13:31,468 - INFO - Data inserted successfully into patient_demographics
+2025-03-30 22:13:31,481 - INFO - Data inserted successfully into patient_visits
+2025-03-30 22:13:31,492 - INFO - Data inserted successfully into patient_lab_results
+2025-03-30 22:13:31,492 - ERROR - Error inserting data into patient_medications: "['dosage'] not in index"
+2025-03-30 22:13:31,501 - INFO - Data inserted successfully into physician_assignments
+2025-03-30 22:16:30,585 - INFO - Successfully loaded cleaned_data.csv
+2025-03-30 22:16:30,640 - INFO - Database connection established successfully.
+2025-03-30 22:16:30,739 - INFO - Data inserted successfully into patient_demographics
+2025-03-30 22:16:30,752 - INFO - Data inserted successfully into patient_visits
+2025-03-30 22:16:30,760 - INFO - Data inserted successfully into patient_lab_results
+2025-03-30 22:16:30,773 - ERROR - Error inserting data into patient_medications: (psycopg2.errors.UndefinedColumn) column "dosage (mg)" of relation "patient_medications" does not exist
+LINE 1: ...(patient_id, medication_id, visit_id, medication, "dosage (m...
+                                                             ^
+
+[SQL: INSERT INTO patient_medications (patient_id, medication_id, visit_id, medication, "dosage (mg)", start_date, end_date, patient_medications_notes) VALUES (%(patient_id__0)s, %(medication_id__0)s, %(visit_id__0)s, %(medication__0)s, %(dosage_AmgZ__0)s, ... 2199 characters truncated ... _13)s, %(dosage_AmgZ__13)s, %(start_date__13)s, %(end_date__13)s, %(patient_medications_notes__13)s)]
+[parameters: {'medication__0': 'SERTRALINE', 'dosage_AmgZ__0': 50.0, 'start_date__0': '2023-01-15', 'end_date__0': '2023-02-15', 'medication_id__0': 'M001', 'visit_id__0': 'V001', 'patient_id__0': 'P001', 'patient_medications_notes__0': 'INITIAL PRESCRIPTION', 'medication__1': 'SERTRALINE', 'dosage_AmgZ__1': 75.0, 'start_date__1': '2023-02-20', 'end_date__1': '2023-03-20', 'medication_id__1': 'M002', 'visit_id__1': 'V002', 'patient_id__1': 'P001', 'patient_medications_notes__1': 'INCREASED DOSAGE', 'medication__2': 'ESCITALOPRAM', 'dosage_AmgZ__2': 10.0, 'start_date__2': '2023-03-05', 'end_date__2': '2023-04-05', 'medication_id__2': 'M003', 'visit_id__2': 'V003', 'patient_id__2': 'P002', 'patient_medications_notes__2': 'UNKNOWN', 'medication__3': 'SERTRALINE', 'dosage_AmgZ__3': 50.0, 'start_date__3': '2023-05-20', 'end_date__3': '2023-06-20', 'medication_id__3': 'M012', 'visit_id__3': 'V013', 'patient_id__3': 'P002', 'patient_medications_notes__3': 'UNKNOWN', 'medication__4': 'LITHIUM', 'dosage_AmgZ__4': 300.0, 'start_date__4': '2023-01-10', 'end_date__4': '2023-02-10', 'medication_id__4': 'M004', 'visit_id__4': 'V004', 'patient_id__4': 'P003', 'patient_medications_notes__4': 'REGULAR MONITORING REQUIRED', 'medication__5': 'LITHIUM', 'dosage_AmgZ__5': 300.0, 'start_date__5': '2023-05-10', 'end_date__5': '2023-06-10', 'medication_id__5': 'M011', 'visit_id__5': 'V012', 'patient_id__5': 'P003', 'patient_medications_notes__5': 'REVIEW DOSAGE', 'medication__6': 'OLANZAPINE', 'dosage_AmgZ__6': 5.0 ... 12 parameters truncated ... 'patient_id__7': 'P005', 'patient_medications_notes__7': 'PATIENT IMPROVED', 'medication__8': 'RISPERIDONE', 'dosage_AmgZ__8': 2.0, 'start_date__8': '2023-03-15', 'end_date__8': '2023-04-15', 'medication_id__8': 'M006', 'visit_id__8': 'V007', 'patient_id__8': 'P006', 'patient_medications_notes__8': 'UNKNOWN', 'medication__9': 'ALPRAZOLAM', 'dosage_AmgZ__9': 0.5, 'start_date__9': '2023-03-20', 'end_date__9': '2023-04-20', 'medication_id__9': 'M007', 'visit_id__9': 'V008', 'patient_id__9': 'P007', 'patient_medications_notes__9': 'FOR ANXIETY', 'medication__10': 'ALPRAZOLAM', 'dosage_AmgZ__10': 0.5, 'start_date__10': '2023-06-15', 'end_date__10': '2023-07-15', 'medication_id__10': 'M014', 'visit_id__10': 'V015', 'patient_id__10': 'P007', 'patient_medications_notes__10': 'FOR EMERGENCY', 'medication__11': 'PAROXETINE', 'dosage_AmgZ__11': 20.0, 'start_date__11': '2023-04-01', 'end_date__11': '2023-05-01', 'medication_id__11': 'M008', 'visit_id__11': 'V009', 'patient_id__11': 'P008', 'patient_medications_notes__11': 'UNKNOWN', 'medication__12': 'SERTRALINE', 'dosage_AmgZ__12': 50.0, 'start_date__12': '2023-04-05', 'end_date__12': '2023-05-05', 'medication_id__12': 'M009', 'visit_id__12': 'V010', 'patient_id__12': 'P009', 'patient_medications_notes__12': 'UNKNOWN', 'medication__13': 'BUSPIRONE', 'dosage_AmgZ__13': 15.0, 'start_date__13': '2023-01-25', 'end_date__13': '2023-02-25', 'medication_id__13': 'M010', 'visit_id__13': 'V011', 'patient_id__13': 'P010', 'patient_medications_notes__13': 'INITIAL TREATMENT'}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-30 22:16:30,783 - INFO - Data inserted successfully into physician_assignments
+2025-03-30 22:21:41,339 - INFO - Successfully loaded cleaned_data.csv
+2025-03-30 22:21:41,406 - INFO - Database connection established successfully.
+2025-03-30 22:21:41,488 - INFO - Data inserted successfully into patient_demographics
+2025-03-30 22:21:41,497 - INFO - Data inserted successfully into patient_visits
+2025-03-30 22:21:41,505 - INFO - Data inserted successfully into patient_lab_results
+2025-03-30 22:21:41,514 - INFO - Data inserted successfully into patient_medications
+2025-03-30 22:21:41,521 - INFO - Data inserted successfully into physician_assignments
+2025-03-30 22:50:18,630 - INFO - Successfully loaded cleaned_data.csv
+2025-03-30 22:50:18,687 - INFO - Database connection established successfully.
+2025-03-30 22:50:18,772 - INFO - Data inserted successfully into patient_demographics
+2025-03-30 22:50:18,780 - INFO - Data inserted successfully into patient_visits
+2025-03-30 22:50:18,789 - INFO - Data inserted successfully into patient_lab_results
+2025-03-30 22:50:18,795 - INFO - Data inserted successfully into patient_medications
+2025-03-30 22:50:18,802 - INFO - Data inserted successfully into physician_assignments
+2025-03-31 08:22:20,685 - INFO - Successfully loaded cleaned_data.csv
+2025-03-31 08:22:21,023 - INFO - Database connection established successfully.
+2025-03-31 08:22:21,229 - INFO - Data inserted successfully into patient_demographics
+2025-03-31 08:22:21,235 - INFO - Data inserted successfully into patient_visits
+2025-03-31 08:22:21,241 - INFO - Data inserted successfully into patient_lab_results
+2025-03-31 08:22:21,247 - INFO - Data inserted successfully into patient_medications
+2025-03-31 08:22:21,253 - INFO - Data inserted successfully into physician_assignments
+2025-03-31 08:23:49,241 - INFO - Successfully loaded cleaned_data.csv
+2025-03-31 08:23:49,288 - INFO - Database connection established successfully.
+2025-03-31 08:23:49,375 - INFO - Data inserted successfully into patient_demographics
+2025-03-31 08:23:49,379 - INFO - Data inserted successfully into patient_visits
+2025-03-31 08:23:49,383 - INFO - Data inserted successfully into patient_lab_results
+2025-03-31 08:23:49,388 - INFO - Data inserted successfully into patient_medications
+2025-03-31 08:23:49,397 - INFO - Data inserted successfully into physician_assignments
+2025-03-31 08:26:49,914 - INFO - Successfully loaded cleaned_data.csv
+2025-03-31 08:26:49,955 - INFO - Database connection established successfully.
+2025-03-31 08:26:50,050 - INFO - Data inserted successfully into patient_demographics
+2025-03-31 08:26:50,063 - INFO - Data inserted successfully into patient_visits
+2025-03-31 08:26:50,074 - INFO - Data inserted successfully into patient_lab_results
+2025-03-31 08:26:50,083 - INFO - Data inserted successfully into patient_medications
+2025-03-31 08:26:50,096 - INFO - Data inserted successfully into physician_assignments
+2025-03-31 08:32:51,046 - INFO - Successfully loaded cleaned_data.csv
+2025-03-31 08:32:51,086 - INFO - Database connection established successfully.
+2025-03-31 08:32:51,244 - INFO - Data inserted successfully into patient_demographics
+2025-03-31 08:32:51,267 - INFO - Data inserted successfully into patient_visits
+2025-03-31 08:32:51,295 - INFO - Data inserted successfully into patient_lab_results
+2025-03-31 08:32:51,324 - INFO - Data inserted successfully into patient_medications
+2025-03-31 08:32:51,346 - INFO - Data inserted successfully into physician_assignments
+2025-03-31 08:34:00,030 - INFO - Successfully loaded cleaned_data.csv
+2025-03-31 08:34:00,072 - INFO - Database connection established successfully.
+2025-03-31 08:34:00,203 - INFO - Data inserted successfully into patient_demographics
+2025-03-31 08:34:00,222 - INFO - Data inserted successfully into patient_visits
+2025-03-31 08:34:00,242 - INFO - Data inserted successfully into patient_lab_results
+2025-03-31 08:34:00,263 - INFO - Data inserted successfully into patient_medications
+2025-03-31 08:34:00,282 - INFO - Data inserted successfully into physician_assignments
+2025-03-31 08:49:13,150 - INFO - Successfully loaded cleaned_data.csv
+2025-03-31 08:49:13,208 - INFO - Database connection established successfully.
+2025-03-31 08:49:13,384 - ERROR - Error inserting data into patient_demographics: (psycopg2.errors.DependentObjectsStillExist) cannot drop table patient_demographics because other objects depend on it
+DETAIL:  constraint patient_visits_patient_id_fkey on table patient_visits depends on table patient_demographics
+constraint patient_lab_results_patient_id_fkey on table patient_lab_results depends on table patient_demographics
+constraint patient_medications_patient_id_fkey on table patient_medications depends on table patient_demographics
+constraint physician_assignments_patient_id_fkey on table physician_assignments depends on table patient_demographics
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+
+[SQL: 
+DROP TABLE patient_demographics]
+(Background on this error at: https://sqlalche.me/e/20/2j85)
+2025-03-31 08:49:13,409 - ERROR - Error inserting data into patient_visits: (psycopg2.errors.DependentObjectsStillExist) cannot drop table patient_visits because other objects depend on it
+DETAIL:  constraint patient_lab_results_visit_id_fkey on table patient_lab_results depends on table patient_visits
+constraint patient_medications_visit_id_fkey on table patient_medications depends on table patient_visits
+constraint physician_assignments_visit_id_fkey on table physician_assignments depends on table patient_visits
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+
+[SQL: 
+DROP TABLE patient_visits]
+(Background on this error at: https://sqlalche.me/e/20/2j85)
+2025-03-31 08:49:13,490 - INFO - Data inserted successfully into patient_lab_results
+2025-03-31 08:49:13,539 - INFO - Data inserted successfully into patient_medications
+2025-03-31 08:49:13,590 - INFO - Data inserted successfully into physician_assignments
+2025-03-31 08:53:31,929 - INFO - Successfully loaded cleaned_data.csv
+2025-03-31 08:53:31,984 - INFO - Database connection established successfully.
+2025-03-31 08:53:32,113 - ERROR - Error inserting data into patient_demographics: (psycopg2.errors.DependentObjectsStillExist) cannot drop table patient_demographics because other objects depend on it
+DETAIL:  constraint patient_visits_patient_id_fkey on table patient_visits depends on table patient_demographics
+constraint patient_lab_results_patient_id_fkey on table patient_lab_results depends on table patient_demographics
+constraint patient_medications_patient_id_fkey on table patient_medications depends on table patient_demographics
+constraint physician_assignments_patient_id_fkey on table physician_assignments depends on table patient_demographics
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+
+[SQL: 
+DROP TABLE patient_demographics]
+(Background on this error at: https://sqlalche.me/e/20/2j85)
+2025-03-31 08:53:32,135 - ERROR - Error inserting data into patient_visits: (psycopg2.errors.DependentObjectsStillExist) cannot drop table patient_visits because other objects depend on it
+DETAIL:  constraint patient_lab_results_visit_id_fkey on table patient_lab_results depends on table patient_visits
+constraint patient_medications_visit_id_fkey on table patient_medications depends on table patient_visits
+constraint physician_assignments_visit_id_fkey on table physician_assignments depends on table patient_visits
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+
+[SQL: 
+DROP TABLE patient_visits]
+(Background on this error at: https://sqlalche.me/e/20/2j85)
+2025-03-31 08:53:32,172 - INFO - Data inserted successfully into patient_lab_results
+2025-03-31 08:53:32,204 - INFO - Data inserted successfully into patient_medications
+2025-03-31 08:53:32,235 - INFO - Data inserted successfully into physician_assignments
+2025-03-31 09:00:19,229 - INFO - Successfully loaded cleaned_data.csv
+2025-03-31 09:00:19,273 - INFO - Database connection established successfully.
+2025-03-31 09:00:19,352 - INFO - Data inserted successfully into patient_demographics
+2025-03-31 09:00:19,360 - INFO - Data inserted successfully into patient_visits
+2025-03-31 09:00:19,367 - INFO - Data inserted successfully into patient_lab_results
+2025-03-31 09:00:19,374 - INFO - Data inserted successfully into patient_medications
+2025-03-31 09:00:19,380 - INFO - Data inserted successfully into physician_assignments
+2025-03-31 09:17:32,888 - INFO - Successfully loaded cleaned_data.csv
+2025-03-31 09:17:32,997 - INFO - Database connection established successfully.
+2025-03-31 09:17:33,417 - INFO - Data inserted successfully into patient_demographics
+2025-03-31 09:17:33,431 - INFO - Data inserted successfully into patient_visits
+2025-03-31 09:17:33,454 - INFO - Data inserted successfully into patient_lab_results
+2025-03-31 09:17:33,478 - INFO - Data inserted successfully into patient_medications
+2025-03-31 09:17:33,499 - INFO - Data inserted successfully into physician_assignments
+2025-03-31 09:23:47,018 - INFO - Successfully loaded cleaned_data.csv
+2025-03-31 09:23:47,060 - INFO - Database connection established successfully.
+2025-03-31 09:23:47,265 - INFO - Data inserted successfully into patient_demographics
+2025-03-31 09:23:47,295 - INFO - Data inserted successfully into patient_visits
+2025-03-31 09:23:47,323 - INFO - Data inserted successfully into patient_lab_results
+2025-03-31 09:23:47,350 - INFO - Data inserted successfully into patient_medications
+2025-03-31 09:23:47,375 - INFO - Data inserted successfully into physician_assignments
+2025-03-31 09:38:16,986 - INFO - Successfully loaded cleaned_data.csv
+2025-03-31 09:38:17,051 - INFO - Database connection established successfully.
+2025-03-31 09:38:17,234 - INFO - Data inserted successfully into patient_demographics
+2025-03-31 09:38:17,263 - INFO - Data inserted successfully into patient_visits
+2025-03-31 09:38:17,281 - INFO - Data inserted successfully into patient_lab_results
+2025-03-31 09:38:17,299 - INFO - Data inserted successfully into patient_medications
+2025-03-31 09:38:17,316 - INFO - Data inserted successfully into physician_assignments

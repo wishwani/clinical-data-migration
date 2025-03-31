@@ -55,7 +55,7 @@ def fetch_data_from_postgres(table_name):
 def insert_data_into_supabase(df, table_name):
     try:
         engine = connect_supabase()
-        df.to_sql(table_name, engine, if_exists='append', index=False, schema="data_migration") 
+        df.to_sql(table_name, engine, if_exists='replace', index=False, schema="data_migration") 
         logging.info(f"Data inserted into {table_name} successfully in Supabase.")
     except Exception as e:
         logging.error(f"Error inserting data into Supabase table {table_name}: {e}")
