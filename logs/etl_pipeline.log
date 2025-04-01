@@ -5817,3 +5817,139 @@ dtype: object
 2025-03-31 09:38:09,692 - INFO - Data merging successful.
 2025-03-31 09:38:09,698 - INFO - Cleaned data saved to data/cleaned_data.csv
 2025-03-31 09:38:09,698 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-01 10:39:53,375 - INFO - ETL pipeline started.
+2025-04-01 10:39:53,387 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-01 10:39:53,402 - INFO - Loaded patient_visits.csv successfully.
+2025-04-01 10:39:53,411 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-01 10:39:53,422 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-01 10:39:53,440 - INFO - Loaded patient_medications.csv successfully.
+2025-04-01 10:39:53,445 - INFO - Removed duplicates in patient_demographics
+2025-04-01 10:39:53,447 - INFO - No conversion needed at index 0 for ['result_unit']
+2025-04-01 10:39:53,447 - INFO - No conversion needed at index 1 for ['result_unit']
+2025-04-01 10:39:53,447 - INFO - No conversion needed at index 2 for ['result_unit']
+2025-04-01 10:39:53,447 - INFO - No conversion needed at index 3 for ['result_unit']
+2025-04-01 10:39:53,447 - INFO - No conversion needed at index 4 for ['result_unit']
+2025-04-01 10:39:53,447 - INFO - No conversion needed at index 5 for ['result_unit']
+2025-04-01 10:39:53,447 - INFO - No conversion needed at index 6 for ['result_unit']
+2025-04-01 10:39:53,447 - INFO - No conversion needed at index 7 for ['result_unit']
+2025-04-01 10:39:53,447 - INFO - No conversion needed at index 8 for ['result_unit']
+2025-04-01 10:39:53,448 - INFO - No conversion needed at index 9 for ['result_unit']
+2025-04-01 10:39:53,449 - INFO - Cleaned data for patient_demographics
+2025-04-01 10:39:53,451 - INFO - Removed duplicates in patient_visits
+2025-04-01 10:39:53,451 - INFO - No conversion needed at index 0 for ['result_unit']
+2025-04-01 10:39:53,451 - INFO - No conversion needed at index 1 for ['result_unit']
+2025-04-01 10:39:53,451 - INFO - No conversion needed at index 2 for ['result_unit']
+2025-04-01 10:39:53,451 - INFO - No conversion needed at index 3 for ['result_unit']
+2025-04-01 10:39:53,451 - INFO - No conversion needed at index 4 for ['result_unit']
+2025-04-01 10:39:53,451 - INFO - No conversion needed at index 5 for ['result_unit']
+2025-04-01 10:39:53,452 - INFO - No conversion needed at index 6 for ['result_unit']
+2025-04-01 10:39:53,452 - INFO - No conversion needed at index 7 for ['result_unit']
+2025-04-01 10:39:53,452 - INFO - No conversion needed at index 8 for ['result_unit']
+2025-04-01 10:39:53,452 - INFO - No conversion needed at index 9 for ['result_unit']
+2025-04-01 10:39:53,452 - INFO - No conversion needed at index 10 for ['result_unit']
+2025-04-01 10:39:53,452 - INFO - No conversion needed at index 11 for ['result_unit']
+2025-04-01 10:39:53,452 - INFO - No conversion needed at index 12 for ['result_unit']
+2025-04-01 10:39:53,452 - INFO - No conversion needed at index 13 for ['result_unit']
+2025-04-01 10:39:53,452 - INFO - No conversion needed at index 14 for ['result_unit']
+2025-04-01 10:39:53,456 - INFO - Cleaned data for patient_visits
+2025-04-01 10:39:53,457 - INFO - Removed duplicates in patient_lab_results
+2025-04-01 10:39:53,460 - INFO - Converted result_value at index 2 from g/dL to mg/dL. New value: 13500.0 mg/dL
+2025-04-01 10:39:53,461 - INFO - Updated reference_range at index 2 to 1200-16000
+2025-04-01 10:39:53,461 - INFO - Converted result_value at index 5 from g/dL to mg/dL. New value: nan mg/dL
+2025-04-01 10:39:53,461 - INFO - Updated reference_range at index 5 to 1200-16000
+2025-04-01 10:39:53,461 - INFO - Converted result_value at index 8 from g/dL to mg/dL. New value: 14000.0 mg/dL
+2025-04-01 10:39:53,461 - INFO - Updated reference_range at index 8 to 1200-16000
+2025-04-01 10:39:53,481 - INFO - Cleaned data for patient_lab_results
+2025-04-01 10:39:53,481 - INFO - Removed duplicates in physician_assignments
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 0 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 1 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 2 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 3 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 4 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 5 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 6 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 7 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 8 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 9 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 10 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 11 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 12 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 13 for ['result_unit']
+2025-04-01 10:39:53,482 - INFO - No conversion needed at index 14 for ['result_unit']
+2025-04-01 10:39:53,485 - INFO - Cleaned data for physician_assignments
+2025-04-01 10:39:53,486 - INFO - Removed duplicates in patient_medications
+2025-04-01 10:39:53,486 - INFO - No conversion needed at index 0 for ['result_unit']
+2025-04-01 10:39:53,486 - INFO - No conversion needed at index 1 for ['result_unit']
+2025-04-01 10:39:53,486 - INFO - No conversion needed at index 2 for ['result_unit']
+2025-04-01 10:39:53,486 - INFO - No conversion needed at index 3 for ['result_unit']
+2025-04-01 10:39:53,487 - INFO - No conversion needed at index 4 for ['result_unit']
+2025-04-01 10:39:53,487 - INFO - No conversion needed at index 5 for ['result_unit']
+2025-04-01 10:39:53,487 - INFO - No conversion needed at index 6 for ['result_unit']
+2025-04-01 10:39:53,487 - INFO - No conversion needed at index 7 for ['result_unit']
+2025-04-01 10:39:53,487 - INFO - No conversion needed at index 8 for ['result_unit']
+2025-04-01 10:39:53,487 - INFO - No conversion needed at index 9 for ['result_unit']
+2025-04-01 10:39:53,487 - INFO - No conversion needed at index 10 for ['result_unit']
+2025-04-01 10:39:53,487 - INFO - No conversion needed at index 11 for ['result_unit']
+2025-04-01 10:39:53,487 - INFO - No conversion needed at index 12 for ['result_unit']
+2025-04-01 10:39:53,487 - INFO - No conversion needed at index 13 for ['result_unit']
+2025-04-01 10:39:53,491 - INFO - Cleaned data for patient_medications
+2025-04-01 10:39:53,504 - INFO - Data merging successful.
+2025-04-01 10:39:53,507 - INFO - Cleaned data saved to data/cleaned_data.csv
+2025-04-01 10:39:53,507 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-01 10:42:40,388 - INFO - ETL pipeline started.
+2025-04-01 10:42:40,391 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-01 10:42:40,392 - INFO - Loaded patient_visits.csv successfully.
+2025-04-01 10:42:40,394 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-01 10:42:40,395 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-01 10:42:40,396 - INFO - Loaded patient_medications.csv successfully.
+2025-04-01 10:42:40,399 - INFO - Removed duplicates in patient_demographics
+2025-04-01 10:42:40,403 - INFO - Cleaned data for patient_demographics
+2025-04-01 10:42:40,404 - INFO - Removed duplicates in patient_visits
+2025-04-01 10:42:40,405 - INFO - Cleaned data for patient_visits
+2025-04-01 10:42:40,406 - INFO - Removed duplicates in patient_lab_results
+2025-04-01 10:42:40,431 - INFO - Cleaned data for patient_lab_results
+2025-04-01 10:42:40,432 - INFO - Removed duplicates in physician_assignments
+2025-04-01 10:42:40,435 - INFO - Cleaned data for physician_assignments
+2025-04-01 10:42:40,436 - INFO - Removed duplicates in patient_medications
+2025-04-01 10:42:40,440 - INFO - Cleaned data for patient_medications
+2025-04-01 10:42:40,453 - INFO - Data merging successful.
+2025-04-01 10:42:40,456 - INFO - Cleaned data saved to data/cleaned_data.csv
+2025-04-01 10:42:40,456 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-01 10:47:24,724 - INFO - ETL pipeline started.
+2025-04-01 10:47:24,730 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-01 10:47:24,732 - INFO - Loaded patient_visits.csv successfully.
+2025-04-01 10:47:24,733 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-01 10:47:24,734 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-01 10:47:24,735 - INFO - Loaded patient_medications.csv successfully.
+2025-04-01 10:47:24,737 - INFO - Removed duplicates in patient_demographics
+2025-04-01 10:47:24,741 - INFO - Cleaned data for patient_demographics
+2025-04-01 10:47:24,742 - INFO - Removed duplicates in patient_visits
+2025-04-01 10:47:24,744 - INFO - Cleaned data for patient_visits
+2025-04-01 10:47:24,744 - INFO - Removed duplicates in patient_lab_results
+2025-04-01 10:47:24,770 - INFO - Cleaned data for patient_lab_results
+2025-04-01 10:47:24,770 - INFO - Removed duplicates in physician_assignments
+2025-04-01 10:47:24,773 - INFO - Cleaned data for physician_assignments
+2025-04-01 10:47:24,774 - INFO - Removed duplicates in patient_medications
+2025-04-01 10:47:24,777 - INFO - Cleaned data for patient_medications
+2025-04-01 10:47:24,803 - INFO - Data merging successful.
+2025-04-01 10:47:24,806 - INFO - Cleaned data saved to data/cleaned_data.csv
+2025-04-01 10:47:24,806 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-01 10:49:08,049 - INFO - ETL pipeline started.
+2025-04-01 10:49:08,052 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-01 10:49:08,053 - INFO - Loaded patient_visits.csv successfully.
+2025-04-01 10:49:08,054 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-01 10:49:08,055 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-01 10:49:08,055 - INFO - Loaded patient_medications.csv successfully.
+2025-04-01 10:49:08,057 - INFO - Removed duplicates in patient_demographics
+2025-04-01 10:49:08,059 - INFO - Cleaned data for patient_demographics
+2025-04-01 10:49:08,059 - INFO - Removed duplicates in patient_visits
+2025-04-01 10:49:08,062 - INFO - Cleaned data for patient_visits
+2025-04-01 10:49:08,062 - INFO - Removed duplicates in patient_lab_results
+2025-04-01 10:49:08,079 - INFO - Cleaned data for patient_lab_results
+2025-04-01 10:49:08,080 - INFO - Removed duplicates in physician_assignments
+2025-04-01 10:49:08,082 - INFO - Cleaned data for physician_assignments
+2025-04-01 10:49:08,083 - INFO - Removed duplicates in patient_medications
+2025-04-01 10:49:08,087 - INFO - Cleaned data for patient_medications
+2025-04-01 10:49:08,095 - INFO - Data merging successful.
+2025-04-01 10:49:08,097 - INFO - Cleaned data saved to data/cleaned_data.csv
+2025-04-01 10:49:08,098 - INFO - ETL pipeline (Load, Transform) completed successfully.

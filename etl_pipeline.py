@@ -68,20 +68,13 @@ def clean_data(data):
                 if "result_unit" in df.columns:
                     df["result_unit"] = df["result_unit"].str.upper()
 
-                if "result_unit" in df.columns and "result_unit" in df.columns and "reference_range" in df.columns:
+                if "result_unit" in df.columns and "reference_range" in df.columns:
                     g_dl_condition = df["result_unit"] == "G/DL"
                     
                     # Update the 'result_unit' column with only mg/dl and update the'result_value' and 'reference_range' accordingly
                     df.loc[g_dl_condition, "result_value"] *= 1000
                     df.loc[g_dl_condition, "result_unit"] = "MG/DL"
                     df.loc[g_dl_condition, "reference_range"] = df.loc[g_dl_condition, "reference_range"].apply(modify_range)
-
-                    for index in df[g_dl_condition].index:
-                         logging.info(f"Converted result_value at index {index} from g/dL to mg/dL. "
-                                      f"New value: {df.at[index, 'result_value']} mg/dL")
-                         logging.info(f"Updated reference_range at index {index} to {df.at[index, 'reference_range']}")
-                else:
-                    logging.info(f"No conversion needed at index {index} for {["result_unit"]}")
 
                 # Update notes based on result_value and reference_range
                 if key == "patient_lab_results" and pd.notnull(row["result_value"]) and "reference_range":
@@ -102,7 +95,7 @@ def clean_data(data):
                 df[col] = df[col].fillna("UNKNOWN").str.upper()
 
             for col in df.select_dtypes(include=['number']).columns:
-                df[col] = df[col].fillna(-1)
+                df[col] = df[col].fillna(-999)
        
             logging.info(f"Cleaned data for {key}")
 
@@ -129,7 +122,7 @@ def merge_data(data):
         merged_data = merged_data.rename(columns={"notes_x": "patient_lab_results_notes", "notes_y": "patient_medications_notes"})
         
         # Merge age_group into merged data
-        merged_data['age_group'] = merged_data['age'].apply(lambda x: 'UNKNOWN' if x == -1 else ('18-35' if x <= 35 else '36-65' if x <= 65 else '65+'))
+        merged_data['age_group'] = merged_data['age'].apply(lambda x: '18-35' if x <= 35 else '36-65' if x <= 65 else '65+')
 
         # Calculate visit frequency per patient
         visit_counts = data["patient_visits"].groupby("patient_id")["visit_id"].count().reset_index()
