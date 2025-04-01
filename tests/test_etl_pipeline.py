@@ -3,8 +3,7 @@ import pandas as pd
 import os
 import load_to_postgresdb
 
-from etl_pipeline import load_data, clean_data, merge_data
-from etl_pipeline import modify_range
+from etl_pipeline import load_data, clean_data, merge_data, modify_range
 
 # Test data setup
 test_data = {
