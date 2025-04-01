@@ -200,3 +200,9 @@ create schema data_migration
 ```
 python python_integration.py
 ```
+
+# Run the test cases
+
+```
+python -m pytest tests/test_etl_pipeline.py
+```

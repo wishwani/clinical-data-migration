@@ -29,7 +29,7 @@ def modify_range(value):
     if isinstance(value, str) and '-' in value:
         start, end = value.split('-')
         start, end = int(start), int(end)
-        return f"{start*100}-{end*1000}"
+        return f"{start*1000}-{end*1000}"
     return value
 
 # Load CSV files
@@ -62,7 +62,6 @@ def clean_data(data):
             if "age" in df.columns:
                 df["age"] = df["age"].fillna(df["age"].median()).astype(int)
 
-
             for index, row in df.iterrows():
 
                 if "result_unit" in df.columns:
@@ -75,7 +74,7 @@ def clean_data(data):
                     df.loc[g_dl_condition, "result_value"] *= 1000
                     df.loc[g_dl_condition, "result_unit"] = "MG/DL"
                     df.loc[g_dl_condition, "reference_range"] = df.loc[g_dl_condition, "reference_range"].apply(modify_range)
-
+                
                 # Update notes based on result_value and reference_range
                 if key == "patient_lab_results" and pd.notnull(row["result_value"]) and "reference_range":
                     if pd.isnull(row["notes"]):

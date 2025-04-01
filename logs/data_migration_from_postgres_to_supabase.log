@@ -1087,3 +1087,71 @@ CREATE TABLE data_migration.physician_assignments (
 2025-04-01 10:53:05,370 - INFO - Successfully connected to Supabase.
 2025-04-01 10:53:05,500 - INFO - Data inserted into physician_assignments successfully in Supabase.
 2025-04-01 10:53:05,500 - INFO - Migration completed for physician_assignments.
+2025-04-01 14:23:21,773 - INFO - Successfully connected to PostgreSQL.
+2025-04-01 14:23:21,831 - INFO - Query executed successfully: 
+    SELECT patient_id, COUNT(*) AS number_of_visits
+    FROM patient_visits
+    GROUP BY patient_id
+    HAVING COUNT(*) > 1;
+    
+2025-04-01 14:23:21,834 - INFO - Saved visits per patient data to CSV.
+2025-04-01 14:23:21,839 - INFO - Successfully connected to PostgreSQL.
+2025-04-01 14:23:21,887 - INFO - Query executed successfully: 
+    SELECT * 
+    FROM patient_visits
+    WHERE diagnosis = 'Depression'
+    OR visit_date BETWEEN '2023-01-01' AND '2023-12-31';
+    
+2025-04-01 14:23:21,895 - INFO - Successfully connected to PostgreSQL.
+2025-04-01 14:23:21,941 - INFO - Query executed successfully: 
+    SELECT patient_id, 
+       COUNT(*) AS number_of_visits,
+       AVG(COUNT(*)) OVER () AS avg_visits_per_patient
+    FROM patient_visits
+    GROUP BY patient_id
+    HAVING COUNT(*) >= 1  
+    ORDER BY patient_id;
+    
+2025-04-01 14:23:21,942 - INFO - Saved average visits per patient data to CSV.
+2025-04-01 14:23:21,948 - INFO - Successfully connected to PostgreSQL.
+2025-04-01 14:23:21,998 - INFO - Query executed successfully: 
+    SELECT EXTRACT(MONTH FROM visit_date) AS visit_month, COUNT(*) AS number_of_visits
+    FROM patient_visits
+    GROUP BY EXTRACT(MONTH FROM visit_date)
+    ORDER BY visit_month;
+    
+2025-04-01 14:23:22,002 - INFO - Starting migration for patient_demographics...
+2025-04-01 14:23:22,002 - INFO - Successfully connected to PostgreSQL.
+2025-04-01 14:23:22,052 - INFO - Query executed successfully: SELECT * FROM patient_demographics;
+2025-04-01 14:23:22,052 - INFO - Fetched data from PostgreSQL table patient_demographics.
+2025-04-01 14:23:22,053 - INFO - Successfully connected to Supabase.
+2025-04-01 14:23:22,180 - INFO - Data inserted into patient_demographics successfully in Supabase.
+2025-04-01 14:23:22,180 - INFO - Migration completed for patient_demographics.
+2025-04-01 14:23:22,180 - INFO - Starting migration for patient_visits...
+2025-04-01 14:23:22,181 - INFO - Successfully connected to PostgreSQL.
+2025-04-01 14:23:22,251 - INFO - Query executed successfully: SELECT * FROM patient_visits;
+2025-04-01 14:23:22,251 - INFO - Fetched data from PostgreSQL table patient_visits.
+2025-04-01 14:23:22,252 - INFO - Successfully connected to Supabase.
+2025-04-01 14:23:22,364 - INFO - Data inserted into patient_visits successfully in Supabase.
+2025-04-01 14:23:22,364 - INFO - Migration completed for patient_visits.
+2025-04-01 14:23:22,364 - INFO - Starting migration for patient_lab_results...
+2025-04-01 14:23:22,365 - INFO - Successfully connected to PostgreSQL.
+2025-04-01 14:23:22,415 - INFO - Query executed successfully: SELECT * FROM patient_lab_results;
+2025-04-01 14:23:22,415 - INFO - Fetched data from PostgreSQL table patient_lab_results.
+2025-04-01 14:23:22,416 - INFO - Successfully connected to Supabase.
+2025-04-01 14:23:22,539 - INFO - Data inserted into patient_lab_results successfully in Supabase.
+2025-04-01 14:23:22,539 - INFO - Migration completed for patient_lab_results.
+2025-04-01 14:23:22,539 - INFO - Starting migration for patient_medications...
+2025-04-01 14:23:22,540 - INFO - Successfully connected to PostgreSQL.
+2025-04-01 14:23:22,593 - INFO - Query executed successfully: SELECT * FROM patient_medications;
+2025-04-01 14:23:22,593 - INFO - Fetched data from PostgreSQL table patient_medications.
+2025-04-01 14:23:22,594 - INFO - Successfully connected to Supabase.
+2025-04-01 14:23:22,777 - INFO - Data inserted into patient_medications successfully in Supabase.
+2025-04-01 14:23:22,777 - INFO - Migration completed for patient_medications.
+2025-04-01 14:23:22,777 - INFO - Starting migration for physician_assignments...
+2025-04-01 14:23:22,778 - INFO - Successfully connected to PostgreSQL.
+2025-04-01 14:23:22,844 - INFO - Query executed successfully: SELECT * FROM physician_assignments;
+2025-04-01 14:23:22,844 - INFO - Fetched data from PostgreSQL table physician_assignments.
+2025-04-01 14:23:22,845 - INFO - Successfully connected to Supabase.
+2025-04-01 14:23:22,972 - INFO - Data inserted into physician_assignments successfully in Supabase.
+2025-04-01 14:23:22,972 - INFO - Migration completed for physician_assignments.

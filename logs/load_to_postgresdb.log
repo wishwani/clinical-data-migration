@@ -227,3 +227,17 @@ DROP TABLE patient_visits]
 2025-04-01 10:52:40,464 - INFO - Data inserted successfully into patient_lab_results
 2025-04-01 10:52:40,503 - INFO - Data inserted successfully into patient_medications
 2025-04-01 10:52:40,528 - INFO - Data inserted successfully into physician_assignments
+2025-04-01 14:06:47,079 - INFO - Successfully loaded cleaned_data.csv
+2025-04-01 14:06:47,131 - INFO - Database connection established successfully.
+2025-04-01 14:06:47,775 - INFO - Data inserted successfully into patient_demographics
+2025-04-01 14:06:47,798 - INFO - Data inserted successfully into patient_visits
+2025-04-01 14:06:47,818 - INFO - Data inserted successfully into patient_lab_results
+2025-04-01 14:06:47,837 - INFO - Data inserted successfully into patient_medications
+2025-04-01 14:06:47,856 - INFO - Data inserted successfully into physician_assignments
+2025-04-01 14:22:59,842 - INFO - Successfully loaded cleaned_data.csv
+2025-04-01 14:22:59,899 - INFO - Database connection established successfully.
+2025-04-01 14:23:00,113 - INFO - Data inserted successfully into patient_demographics
+2025-04-01 14:23:00,133 - INFO - Data inserted successfully into patient_visits
+2025-04-01 14:23:00,153 - INFO - Data inserted successfully into patient_lab_results
+2025-04-01 14:23:00,174 - INFO - Data inserted successfully into patient_medications
+2025-04-01 14:23:00,198 - INFO - Data inserted successfully into physician_assignments

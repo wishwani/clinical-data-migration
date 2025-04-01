@@ -5953,3 +5953,79 @@ dtype: object
 2025-04-01 10:49:08,095 - INFO - Data merging successful.
 2025-04-01 10:49:08,097 - INFO - Cleaned data saved to data/cleaned_data.csv
 2025-04-01 10:49:08,098 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-01 13:53:30,711 - INFO - ETL pipeline started.
+2025-04-01 13:53:30,726 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-01 13:53:30,736 - INFO - Loaded patient_visits.csv successfully.
+2025-04-01 13:53:30,737 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-01 13:53:30,749 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-01 13:53:30,761 - INFO - Loaded patient_medications.csv successfully.
+2025-04-01 13:53:30,762 - INFO - Removed duplicates in patient_demographics
+2025-04-01 13:53:30,763 - ERROR - Error cleaning data for patient_demographics: 'reference_range'
+2025-04-01 13:53:30,764 - INFO - Removed duplicates in patient_visits
+2025-04-01 13:53:30,764 - ERROR - Error cleaning data for patient_visits: 'reference_range'
+2025-04-01 13:53:30,764 - INFO - Removed duplicates in patient_lab_results
+2025-04-01 13:53:30,808 - INFO - Cleaned data for patient_lab_results
+2025-04-01 13:53:30,809 - INFO - Removed duplicates in physician_assignments
+2025-04-01 13:53:30,809 - ERROR - Error cleaning data for physician_assignments: 'reference_range'
+2025-04-01 13:53:30,811 - INFO - Removed duplicates in patient_medications
+2025-04-01 13:53:30,813 - ERROR - Error cleaning data for patient_medications: 'reference_range'
+2025-04-01 13:53:30,823 - INFO - Data merging successful.
+2025-04-01 13:53:30,829 - INFO - Cleaned data saved to data/cleaned_data.csv
+2025-04-01 13:53:30,829 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-01 13:53:58,696 - INFO - ETL pipeline started.
+2025-04-01 13:53:58,700 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-01 13:53:58,701 - INFO - Loaded patient_visits.csv successfully.
+2025-04-01 13:53:58,702 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-01 13:53:58,704 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-01 13:53:58,705 - INFO - Loaded patient_medications.csv successfully.
+2025-04-01 13:53:58,706 - INFO - Removed duplicates in patient_demographics
+2025-04-01 13:53:58,707 - ERROR - Error cleaning data for patient_demographics: 'reference_range'
+2025-04-01 13:53:58,708 - INFO - Removed duplicates in patient_visits
+2025-04-01 13:53:58,708 - ERROR - Error cleaning data for patient_visits: 'reference_range'
+2025-04-01 13:53:58,709 - INFO - Removed duplicates in patient_lab_results
+2025-04-01 13:53:58,757 - INFO - Cleaned data for patient_lab_results
+2025-04-01 13:53:58,758 - INFO - Removed duplicates in physician_assignments
+2025-04-01 13:53:58,758 - ERROR - Error cleaning data for physician_assignments: 'reference_range'
+2025-04-01 13:53:58,758 - INFO - Removed duplicates in patient_medications
+2025-04-01 13:53:58,759 - ERROR - Error cleaning data for patient_medications: 'reference_range'
+2025-04-01 13:53:58,770 - INFO - Data merging successful.
+2025-04-01 13:53:58,773 - INFO - Cleaned data saved to data/cleaned_data.csv
+2025-04-01 13:53:58,773 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-01 14:02:19,641 - INFO - ETL pipeline started.
+2025-04-01 14:02:19,646 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-01 14:02:19,647 - INFO - Loaded patient_visits.csv successfully.
+2025-04-01 14:02:19,648 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-01 14:02:19,648 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-01 14:02:19,649 - INFO - Loaded patient_medications.csv successfully.
+2025-04-01 14:02:19,651 - INFO - Removed duplicates in patient_demographics
+2025-04-01 14:02:19,652 - ERROR - Error cleaning data for patient_demographics: 'reference_range'
+2025-04-01 14:02:19,652 - INFO - Removed duplicates in patient_visits
+2025-04-01 14:02:19,652 - ERROR - Error cleaning data for patient_visits: 'reference_range'
+2025-04-01 14:02:19,653 - INFO - Removed duplicates in patient_lab_results
+2025-04-01 14:02:19,690 - INFO - Cleaned data for patient_lab_results
+2025-04-01 14:02:19,691 - INFO - Removed duplicates in physician_assignments
+2025-04-01 14:02:19,691 - ERROR - Error cleaning data for physician_assignments: 'reference_range'
+2025-04-01 14:02:19,692 - INFO - Removed duplicates in patient_medications
+2025-04-01 14:02:19,693 - ERROR - Error cleaning data for patient_medications: 'reference_range'
+2025-04-01 14:02:19,703 - INFO - Data merging successful.
+2025-04-01 14:02:19,708 - INFO - Cleaned data saved to data/cleaned_data.csv
+2025-04-01 14:02:19,708 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-01 14:06:10,113 - INFO - ETL pipeline started.
+2025-04-01 14:06:10,116 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-01 14:06:10,116 - INFO - Loaded patient_visits.csv successfully.
+2025-04-01 14:06:10,117 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-01 14:06:10,118 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-01 14:06:10,119 - INFO - Loaded patient_medications.csv successfully.
+2025-04-01 14:06:10,121 - INFO - Removed duplicates in patient_demographics
+2025-04-01 14:06:10,123 - INFO - Cleaned data for patient_demographics
+2025-04-01 14:06:10,124 - INFO - Removed duplicates in patient_visits
+2025-04-01 14:06:10,126 - INFO - Cleaned data for patient_visits
+2025-04-01 14:06:10,128 - INFO - Removed duplicates in patient_lab_results
+2025-04-01 14:06:10,144 - INFO - Cleaned data for patient_lab_results
+2025-04-01 14:06:10,145 - INFO - Removed duplicates in physician_assignments
+2025-04-01 14:06:10,147 - INFO - Cleaned data for physician_assignments
+2025-04-01 14:06:10,148 - INFO - Removed duplicates in patient_medications
+2025-04-01 14:06:10,158 - INFO - Cleaned data for patient_medications
+2025-04-01 14:06:10,171 - INFO - Data merging successful.
+2025-04-01 14:06:10,173 - INFO - Cleaned data saved to data/cleaned_data.csv
+2025-04-01 14:06:10,174 - INFO - ETL pipeline (Load, Transform) completed successfully.
