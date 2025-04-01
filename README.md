@@ -6,7 +6,8 @@ This project processes synthetic clinical study data using an **ETL pipeline** b
 
 ## 2. Design Choices
 ### **ETL Pipeline Design**
-### Data Extraction: Reads five CSV files containing patient demographics, visits, lab results, medications, and physician assignments.
+### Data Extraction: 
+- Reads five CSV files containing patient demographics, visits, lab results, medications, and physician assignments.
 ### Data Cleaning:
 ### 1. Duplicate Records  
 - Duplicate rows within each dataset are removed to ensure data integrity.  
