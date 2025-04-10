@@ -6048,3 +6048,98 @@ dtype: object
 2025-04-10 11:19:20,826 - INFO - Data merging successful.
 2025-04-10 11:19:20,831 - INFO - Cleaned data saved to data/cleaned_data.csv
 2025-04-10 11:19:20,831 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-10 15:54:05,221 - INFO - ETL pipeline started.
+2025-04-10 15:54:05,230 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-10 15:54:05,232 - INFO - Loaded patient_visits.csv successfully.
+2025-04-10 15:54:05,235 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-10 15:54:05,246 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-10 15:54:05,249 - INFO - Loaded patient_medications.csv successfully.
+2025-04-10 15:54:05,254 - INFO - Removed duplicates in patient_demographics
+2025-04-10 15:54:05,258 - INFO - Cleaned data for patient_demographics
+2025-04-10 15:54:05,259 - INFO - Removed duplicates in patient_visits
+2025-04-10 15:54:05,265 - INFO - Cleaned data for patient_visits
+2025-04-10 15:54:05,266 - INFO - Removed duplicates in patient_lab_results
+2025-04-10 15:54:05,291 - INFO - Cleaned data for patient_lab_results
+2025-04-10 15:54:05,292 - INFO - Removed duplicates in physician_assignments
+2025-04-10 15:54:05,296 - INFO - Cleaned data for physician_assignments
+2025-04-10 15:54:05,297 - INFO - Removed duplicates in patient_medications
+2025-04-10 15:54:05,303 - INFO - Cleaned data for patient_medications
+2025-04-10 15:54:05,317 - INFO - Data merging successful.
+2025-04-10 15:54:05,320 - INFO - Cleaned data saved to data/cleaned_data.csv
+2025-04-10 15:54:05,320 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-10 16:56:25,192 - INFO - ETL pipeline started.
+2025-04-10 16:56:25,203 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-10 16:56:25,204 - INFO - Loaded patient_visits.csv successfully.
+2025-04-10 16:56:25,206 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-10 16:56:25,207 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-10 16:56:25,208 - INFO - Loaded patient_medications.csv successfully.
+2025-04-10 16:56:25,213 - INFO - Removed duplicates in patient_demographics
+2025-04-10 16:56:25,221 - INFO - Cleaned data for patient_demographics
+2025-04-10 16:56:25,222 - INFO - Removed duplicates in patient_visits
+2025-04-10 16:56:25,224 - INFO - Cleaned data for patient_visits
+2025-04-10 16:56:25,225 - INFO - Removed duplicates in patient_lab_results
+2025-04-10 16:56:25,247 - INFO - Cleaned data for patient_lab_results
+2025-04-10 16:56:25,248 - INFO - Removed duplicates in physician_assignments
+2025-04-10 16:56:25,252 - INFO - Cleaned data for physician_assignments
+2025-04-10 16:56:25,253 - INFO - Removed duplicates in patient_medications
+2025-04-10 16:56:25,259 - INFO - Cleaned data for patient_medications
+2025-04-10 16:56:25,272 - INFO - Data merging successful.
+2025-04-10 16:56:25,275 - ERROR - Error saving cleaned data: [Errno 13] Permission denied: 'data/cleaned_data.csv'
+2025-04-10 16:56:25,275 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-10 16:56:31,082 - INFO - ETL pipeline started.
+2025-04-10 16:56:31,101 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-10 16:56:31,102 - INFO - Loaded patient_visits.csv successfully.
+2025-04-10 16:56:31,103 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-10 16:56:31,104 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-10 16:56:31,105 - INFO - Loaded patient_medications.csv successfully.
+2025-04-10 16:56:31,112 - INFO - Removed duplicates in patient_demographics
+2025-04-10 16:56:31,122 - INFO - Cleaned data for patient_demographics
+2025-04-10 16:56:31,122 - INFO - Removed duplicates in patient_visits
+2025-04-10 16:56:31,125 - INFO - Cleaned data for patient_visits
+2025-04-10 16:56:31,125 - INFO - Removed duplicates in patient_lab_results
+2025-04-10 16:56:31,148 - INFO - Cleaned data for patient_lab_results
+2025-04-10 16:56:31,148 - INFO - Removed duplicates in physician_assignments
+2025-04-10 16:56:31,152 - INFO - Cleaned data for physician_assignments
+2025-04-10 16:56:31,153 - INFO - Removed duplicates in patient_medications
+2025-04-10 16:56:31,157 - INFO - Cleaned data for patient_medications
+2025-04-10 16:56:31,169 - INFO - Data merging successful.
+2025-04-10 16:56:31,173 - INFO - Cleaned data saved to data/cleaned_data.csv
+2025-04-10 16:56:31,173 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-10 17:02:49,917 - INFO - ETL pipeline started.
+2025-04-10 17:02:49,926 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-10 17:02:49,928 - INFO - Loaded patient_visits.csv successfully.
+2025-04-10 17:02:49,929 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-10 17:02:49,930 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-10 17:02:49,930 - INFO - Loaded patient_medications.csv successfully.
+2025-04-10 17:02:49,938 - INFO - Removed duplicates in patient_demographics
+2025-04-10 17:02:49,945 - INFO - Cleaned data for patient_demographics
+2025-04-10 17:02:49,946 - INFO - Removed duplicates in patient_visits
+2025-04-10 17:02:49,952 - INFO - Cleaned data for patient_visits
+2025-04-10 17:02:49,953 - INFO - Removed duplicates in patient_lab_results
+2025-04-10 17:02:49,976 - INFO - Cleaned data for patient_lab_results
+2025-04-10 17:02:49,977 - INFO - Removed duplicates in physician_assignments
+2025-04-10 17:02:49,979 - INFO - Cleaned data for physician_assignments
+2025-04-10 17:02:49,980 - INFO - Removed duplicates in patient_medications
+2025-04-10 17:02:49,987 - INFO - Cleaned data for patient_medications
+2025-04-10 17:02:49,997 - INFO - Data merging successful.
+2025-04-10 17:02:50,000 - ERROR - Error saving cleaned data: [Errno 13] Permission denied: 'data/cleaned_data.csv'
+2025-04-10 17:02:50,000 - INFO - ETL pipeline (Load, Transform) completed successfully.
+2025-04-10 17:02:55,369 - INFO - ETL pipeline started.
+2025-04-10 17:02:55,372 - INFO - Loaded patient_demographics.csv successfully.
+2025-04-10 17:02:55,373 - INFO - Loaded patient_visits.csv successfully.
+2025-04-10 17:02:55,374 - INFO - Loaded patient_lab_results.csv successfully.
+2025-04-10 17:02:55,375 - INFO - Loaded physician_assignments.csv successfully.
+2025-04-10 17:02:55,376 - INFO - Loaded patient_medications.csv successfully.
+2025-04-10 17:02:55,377 - INFO - Removed duplicates in patient_demographics
+2025-04-10 17:02:55,380 - INFO - Cleaned data for patient_demographics
+2025-04-10 17:02:55,380 - INFO - Removed duplicates in patient_visits
+2025-04-10 17:02:55,385 - INFO - Cleaned data for patient_visits
+2025-04-10 17:02:55,386 - INFO - Removed duplicates in patient_lab_results
+2025-04-10 17:02:55,420 - INFO - Cleaned data for patient_lab_results
+2025-04-10 17:02:55,420 - INFO - Removed duplicates in physician_assignments
+2025-04-10 17:02:55,424 - INFO - Cleaned data for physician_assignments
+2025-04-10 17:02:55,424 - INFO - Removed duplicates in patient_medications
+2025-04-10 17:02:55,429 - INFO - Cleaned data for patient_medications
+2025-04-10 17:02:55,438 - INFO - Data merging successful.
+2025-04-10 17:02:55,442 - INFO - Cleaned data saved to data/cleaned_data.csv
+2025-04-10 17:02:55,442 - INFO - ETL pipeline (Load, Transform) completed successfully.

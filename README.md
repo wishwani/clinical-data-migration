@@ -2,7 +2,7 @@
 # Clinical Study Data ETL Pipeline & Database Setup
 
 ## 1. Overview
-This project processes synthetic clinical study data using an **ETL pipeline** built with Python and Pandas. The cleaned data is stored in a **PostgreSQL database** with a well-defined relational schema to support efficient querying and analysis.
+This project processes synthetic clinical study data using an **ETL pipeline** built with Python and Pandas. The cleaned data is stored in a **PostgreSQL database** and **Supabase** with a well-defined relational schema to support efficient querying and analysis.
 
 ## 2. Design Choices
 ### **ETL Pipeline Design**
@@ -23,7 +23,7 @@ This project processes synthetic clinical study data using an **ETL pipeline** b
 ### 4. Standardizing Laboratory Test Results  
 - `result_unit` values are converted to uppercase for consistency.  
 - If `result_unit` is `"G/DL"`, it is converted to `"MG/DL"` by multiplying `result_value` by `1000`.  
-- Corresponding `reference_range` values are adjusted using a transformation (e.g., `"1-5"` → `"100-5000"`).  
+- Corresponding `reference_range` values are adjusted using a transformation (e.g., `"1-5"` → `"1000-5000"`).  
 
 ### 5. Interpreting Lab Results  
 - If `notes` are missing in `patient_lab_results`, they are updated based on `result_value` and `reference_range`:  
@@ -63,7 +63,7 @@ Indexes are created on **foreign keys** and frequently queried columns for **per
 - PostgreSQL
 - Docker
 - Supabase
-- Required Python libraries: `pandas`, `psycopg2`, `sqlalchemy`
+- Required Python libraries: `pandas`, `psycopg2`, `sqlalchemy`, `matplotlib` , `seaborn`
 
 ### **Installation Steps**
 1. **Clone the repository:**
@@ -151,46 +151,22 @@ This script reads `cleaned_data.csv` and inserts it into the supabase database(p
 
 # Differences in Configuration and Setup: PostgreSQL vs Supabase
 
-## PostgreSQL:
-- **Core System**: Relational database.
-- **Installation**:
-  - Local setup via package managers (e.g., `apt`, `brew`).
-  - Cloud setup via managed services (e.g., Amazon RDS).
-- **Real-Time**: Not natively supported, requires additional setup for real-time features.
-- **Authentication**: Requires external configuration (e.g., OAuth, JWT).
-- **Storage**: No built-in file storage; needs external setup.
-- **Security**: Manages user roles and permissions directly through SQL commands.
-- **Scaling**: Manual scaling required; you must configure replication and performance tuning.
-- **Maintenance**: Manual database maintenance, backup, and tuning.
+## Overview
 
-## Supabase:
-- **Core System**: Built on top of PostgreSQL with additional features.
-- **Installation**:
-  - Self-hosted via Docker (requires `docker-compose`).
-  - Managed hosting via Supabase platform (no manual setup required).
-- **Configuration**:
-  - Automatic setup of features like authentication, storage, and real-time subscriptions.
-  - API automatically generated for database tables.
-- **Real-Time**: Built-in real-time subscription support via `pg_subscription`.
-- **Authentication**: Built-in authentication (JWT-based).
-- **Storage**: Integrated file storage and management system.
-- **Security**: Row-Level Security (RLS) enabled by default, integrated with authentication.
-- **Scaling**: Auto-scaling and infrastructure management handled by Supabase.
-- **Maintenance**: Managed infrastructure, including database scaling and backups.
+| Feature / Config             | **Supabase Local** (`supabase start`)        | **Traditional PostgreSQL (Local)**          |
+|-----------------------------|----------------------------------------------|---------------------------------------------|
+| **Port**                    | `54322` (Docker-mapped port)                 | `5432` (default)                            |
+| **User / Password**         | `postgres` / `postgres` (default)            | Set manually during installation            |
+| **Access Method**           | Docker container via Supabase CLI            | Native or Docker-based access               |
+| **Admin UI**                | Supabase Studio (`http://localhost:54323`)   | `psql`, pgAdmin, DBeaver, etc.              |
+| **Schema Initialization**   | Auto-created schemas with RLS, auth, etc.    | Manual schema creation                      |
+| **Extensions**              | Many pre-enabled (`uuid-ossp`, `pg_net`, etc.)| Minimal, added manually                     |
+| **Migration Support**       | Built-in via `supabase/migrations` folder    | External tools (Flyway, Alembic, etc.)      |
+| **Row-Level Security (RLS)**| Enabled by default                           | Disabled by default                         |
+| **Realtime Support**        | Built-in via Supabase Realtime               | Not available by default                    |
+| **REST/GraphQL APIs**       | Auto-generated from tables                   | Not 
 
-## Summary Table:
-
-| **Feature**               | **PostgreSQL**                             | **Supabase**                             |
-|---------------------------|--------------------------------------------|------------------------------------------|
-| **Core System**            | Relational database                        | Built on PostgreSQL with added features  |
-| **API Generation**         | Manual or external tools                   | Automatic RESTful APIs generated        |
-| **Authentication**         | Manual setup                               | Built-in authentication (JWT)           |
-| **Real-Time**              | Not natively supported                     | Built-in real-time subscriptions        |
-| **Storage**                | Requires external setup                    | Integrated file storage                 |
-| **Row-Level Security**     | Manual setup                               | Enabled by default                       |
-| **Infrastructure**         | Self-hosted or managed                     | Managed infrastructure by Supabase      |
-| **Scaling**                | Manual scaling                             | Auto-scaling                             |
-| **Maintenance**            | Manual maintenance                         | Managed infrastructure                  |
+---
 
 ## Create a Schema in Supabase for data migration from postgress to supabase : 
 

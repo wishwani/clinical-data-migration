@@ -99,7 +99,7 @@ def get_patients_by_diagnoise_visit_date_range():
     SELECT patient_id, diagnosis, visit_date
     FROM patient_visits
     WHERE diagnosis = '{diagnosis}'
-    OR (visit_date BETWEEN '{start_date}' AND '{end_date}');;
+    OR (visit_date BETWEEN '{start_date}' AND '{end_date}')
     """
 
     try:
