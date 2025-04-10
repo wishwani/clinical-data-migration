@@ -1,6 +1,10 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import logging
+import matplotlib.pyplot as plt
+import seaborn as sns
+from matplotlib_venn import venn2
+
 
 # PostgreSQL and Supabase connection details
 POSTGRES_DB_URL = "postgresql://postgres:Randika@localhost:5432/clinical_data"  
@@ -62,45 +66,73 @@ def insert_data_into_supabase(df, table_name):
 
 # Query to get visits per patient
 def get_visits_per_patient():
-    query = """
+    query = f"""
     SELECT patient_id, COUNT(*) AS number_of_visits
     FROM patient_visits
     GROUP BY patient_id
-    HAVING COUNT(*) > 1;
+    ORDER BY patient_id;
     """
     try:
         conn = connect_postgres()
         df = execute_query(query, conn)
         df.to_csv(f'outputs/visits_per_patient.csv', index=False)
         logging.info("Saved visits per patient data to CSV.")
+
+        # Plot
+        plt.figure(figsize=(12, 6))
+        sns.barplot(x=df['patient_id'], y=df['number_of_visits'], color="skyblue")
+        plt.xticks(rotation=90)
+        plt.xlabel("Patient ID")
+        plt.ylabel("Number of Visits")
+        plt.title("Number of Visits Per Patient")
+        plt.savefig('outputs/visits_per_patient.png')
         return df
     except Exception as e:
         logging.error(f"Error getting visits per patient: {e}")
 
-# Filter patients by diagnosis and visit date range
-def get_patients_by_diagnoise_or_visit_date():
-    diagnosis = 'Depression'
+# Filter patients by diagnosis
+def get_patients_by_diagnoise_visit_date_range():
+    diagnosis = 'DEPRESSION'
     start_date = '2023-01-01'
     end_date = '2023-12-31'
     query = f"""
-    SELECT * 
+    SELECT patient_id, diagnosis, visit_date
     FROM patient_visits
     WHERE diagnosis = '{diagnosis}'
-    OR visit_date BETWEEN '{start_date}' AND '{end_date}';
+    OR (visit_date BETWEEN '{start_date}' AND '{end_date}');;
     """
 
     try:
         conn = connect_postgres()
         df = execute_query(query, conn)
-        df.to_csv(f'outputs/filtered_patients_by_diagnosis.csv', index=False)
+        df.to_csv(f'outputs/filtered_patients_by_diagnosis_or_visit_date_range.csv', index=False)
+        logging.info("Saved patients by diagnosis to CSV.")
+
+        # Create sets of patient IDs for each group
+        df['visit_date'] = pd.to_datetime(df['visit_date'], errors='coerce')
+        depression_patients = set(df[df['diagnosis'] == 'DEPRESSION']['patient_id'])
+        visit_2023_patients = set(df[
+        (df['visit_date'] >= '2023-01-01') & 
+        (df['visit_date'] <= '2023-12-31')
+        ]['patient_id'])
+
+        # Venn diagram
+        plt.figure(figsize=(8, 6))
+        venn2([depression_patients, visit_2023_patients], 
+        set_labels=('DEPRESSION', 'Visited in 2023'),
+        set_colors=('purple', 'teal'),
+        alpha=0.6)
+
+        plt.title("Patients Diagnosed with DEPRESSION or Visited in 2023")
+        plt.savefig("outputs/filtered_patients_by_diagnosis_or_visit_date_range.png")
         return df
     except Exception as e:
-        logging.error(f"Error getting patients by diagnosis or visit date: {e}")
-        print(f"Error getting patients by diagnosis or visit date: {e}")
+        logging.error(f"Error getting patients by diagnosis_or_visit_date_range: {e}")
+        print(f"Error getting patients by diagnosis_or_visit_date_range: {e}")
 
 # Aggregate number of visits per month
 def get_avg_visits_per_month():
-    query = """
+    query = f"""
     SELECT EXTRACT(MONTH FROM visit_date) AS visit_month, COUNT(*) AS number_of_visits
     FROM patient_visits
     GROUP BY EXTRACT(MONTH FROM visit_date)
@@ -110,13 +142,24 @@ def get_avg_visits_per_month():
         conn = connect_postgres()
         df = execute_query(query, conn)
         df.to_csv(f'outputs/visits_per_month.csv')
+        logging.info("Saved visits per month data to CSV.")
+
+        # Plot
+        plt.figure(figsize=(10, 5))
+        sns.lineplot(x=df['visit_month'], y=df['number_of_visits'], marker="o", color="b")
+        plt.xticks(range(1, 13), ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
+        plt.xlabel("Month")
+        plt.ylabel("Number of Visits")
+        plt.title("Number of Visits Per Month")
+        plt.grid()
+        plt.savefig('outputs/visits_per_month.png')
         return df
     except Exception as e:
         logging.error(f"Error getting average visits per month: {e}")
 
 # Average visits per patient
 def get_avg_visits_per_patient():
-    query = """
+    query = f"""
     SELECT patient_id, 
        COUNT(*) AS number_of_visits,
        AVG(COUNT(*)) OVER () AS avg_visits_per_patient
@@ -131,6 +174,19 @@ def get_avg_visits_per_patient():
         df = execute_query(query, conn)
         df.to_csv(f'outputs/avg_visits_per_patient.csv')
         logging.info("Saved average visits per patient data to CSV.")
+
+        # Plot
+        avg_visits = df['number_of_visits'].mean()
+        plt.figure(figsize=(8, 5))
+        sns.barplot(x='patient_id', y='number_of_visits', data=df, color="purple")
+        plt.axhline(avg_visits, color='red', linestyle='--', label=f'Average Visits: {avg_visits:.2f}')
+        plt.xlabel("Patient ID")
+        plt.ylabel("Number of Visits")
+        plt.title("Average Visits Per Patient")
+        plt.xticks(rotation=45)
+        plt.legend()
+        plt.tight_layout()
+        plt.savefig('outputs/avg_visits_per_patient.png')
         return df
     except Exception as e:
         logging.error(f"Error getting average visits per patient: {e}")
@@ -156,8 +212,8 @@ if __name__ == '__main__':
         visits_per_patient_df = get_visits_per_patient()
         print(visits_per_patient_df)
 
-        patients_by_diagnoise_or_visit_date_df = get_patients_by_diagnoise_or_visit_date()
-        print(patients_by_diagnoise_or_visit_date_df)
+        patients_by_diagnoise_or_visit_date_range_df = get_patients_by_diagnoise_visit_date_range()
+        print(patients_by_diagnoise_or_visit_date_range_df)
         
         avg_visits_per_patient_df = get_avg_visits_per_patient()
         print(avg_visits_per_patient_df)
