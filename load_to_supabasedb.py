@@ -43,13 +43,12 @@ except Exception as e:
     raise
 
 # Helper function to load data into the database
-def load_data_to_table(table_name, columns, dtype, drop_na=False, drop_duplicates=False):
+def load_data_to_table(table_name, columns, dtype, primary_keys=None):
     try:
         data = final_data[columns]
-        if drop_na:
-            data = data.dropna()
-        if drop_duplicates:
-            data = data.drop_duplicates()
+
+        if primary_keys:
+            data = data.dropna(subset=primary_keys)
         
         data.to_sql(table_name, engine, if_exists='replace', index=False, dtype=dtype)
         logging.info(f"Data inserted successfully into {table_name}")
@@ -115,9 +114,9 @@ physician_assignments_dtype = {
 }
 
 if __name__ == "__main__":
-    load_data_to_table('patient_demographics', patient_demographics_columns, patient_demographics_dtype, drop_duplicates=True)
-    load_data_to_table('patient_visits', patient_visits_columns, patient_visits_dtype)
-    load_data_to_table('patient_lab_results', patient_lab_results_columns, patient_lab_results_dtype, drop_na=True)
-    load_data_to_table('patient_medications', patient_medications_columns, patient_medications_dtype, drop_na=True)
-    load_data_to_table('physician_assignments', physician_assignments_columns, physician_assignments_dtype)
+    load_data_to_table('patient_demographics', patient_demographics_columns, patient_demographics_dtype, primary_keys=['patient_id'])
+    load_data_to_table('patient_visits', patient_visits_columns, patient_visits_dtype, primary_keys=['visit_id'])
+    load_data_to_table('patient_lab_results', patient_lab_results_columns, patient_lab_results_dtype, primary_keys=['lab_test_id'])
+    load_data_to_table('patient_medications', patient_medications_columns, patient_medications_dtype, primary_keys=['medication_id'])
+    load_data_to_table('physician_assignments', physician_assignments_columns, physician_assignments_dtype, primary_keys=['patient_id', 'visit_id', 'physician_id'])
 

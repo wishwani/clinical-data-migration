@@ -145,3 +145,10 @@
 2025-04-12 18:19:10,078 - INFO - Data inserted successfully into patient_lab_results
 2025-04-12 18:19:10,131 - INFO - Data inserted successfully into patient_medications
 2025-04-12 18:19:10,176 - INFO - Data inserted successfully into physician_assignments
+2025-04-12 21:08:54,482 - INFO - Successfully loaded cleaned_data.csv
+2025-04-12 21:08:54,545 - INFO - Connected to Supabase database successfully.
+2025-04-12 21:08:54,675 - INFO - Data inserted successfully into patient_demographics
+2025-04-12 21:08:54,720 - INFO - Data inserted successfully into patient_visits
+2025-04-12 21:08:54,770 - INFO - Data inserted successfully into patient_lab_results
+2025-04-12 21:08:54,818 - INFO - Data inserted successfully into patient_medications
+2025-04-12 21:08:54,868 - INFO - Data inserted successfully into physician_assignments
