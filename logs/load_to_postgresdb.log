@@ -262,3 +262,59 @@ DROP TABLE patient_visits]
 2025-04-11 09:08:48,774 - INFO - Data inserted successfully into patient_lab_results
 2025-04-11 09:08:48,798 - INFO - Data inserted successfully into patient_medications
 2025-04-11 09:08:48,821 - INFO - Data inserted successfully into physician_assignments
+2025-04-11 12:55:52,490 - INFO - Successfully loaded cleaned_data.csv
+2025-04-11 12:55:52,826 - INFO - Database connection established successfully.
+2025-04-11 12:55:53,080 - INFO - Data inserted successfully into patient_demographics
+2025-04-11 12:55:53,100 - INFO - Data inserted successfully into patient_visits
+2025-04-11 12:55:53,118 - INFO - Data inserted successfully into patient_lab_results
+2025-04-11 12:55:53,135 - INFO - Data inserted successfully into patient_medications
+2025-04-11 12:55:53,156 - INFO - Data inserted successfully into physician_assignments
+2025-04-11 14:32:23,922 - INFO - Successfully loaded cleaned_data.csv
+2025-04-11 14:32:23,975 - INFO - Database connection established successfully.
+2025-04-11 14:32:24,160 - INFO - Data inserted successfully into patient_demographics
+2025-04-11 14:32:24,180 - INFO - Data inserted successfully into patient_visits
+2025-04-11 14:32:24,200 - INFO - Data inserted successfully into patient_lab_results
+2025-04-11 14:32:24,219 - INFO - Data inserted successfully into patient_medications
+2025-04-11 14:32:24,236 - INFO - Data inserted successfully into physician_assignments
+2025-04-11 16:46:02,029 - INFO - Successfully loaded cleaned_data.csv
+2025-04-11 16:46:02,077 - INFO - Database connection established successfully.
+2025-04-11 16:46:02,243 - INFO - Data inserted successfully into patient_demographics
+2025-04-11 16:46:02,264 - INFO - Data inserted successfully into patient_visits
+2025-04-11 16:46:02,284 - INFO - Data inserted successfully into patient_lab_results
+2025-04-11 16:46:02,301 - INFO - Data inserted successfully into patient_medications
+2025-04-11 16:46:02,318 - INFO - Data inserted successfully into physician_assignments
+2025-04-12 08:13:22,945 - INFO - Successfully loaded cleaned_data.csv
+2025-04-12 08:13:23,231 - INFO - Database connection established successfully.
+2025-04-12 08:13:23,461 - INFO - Data inserted successfully into patient_demographics
+2025-04-12 08:13:23,488 - INFO - Data inserted successfully into patient_visits
+2025-04-12 08:13:23,511 - INFO - Data inserted successfully into patient_lab_results
+2025-04-12 08:13:23,536 - INFO - Data inserted successfully into patient_medications
+2025-04-12 08:13:23,552 - INFO - Data inserted successfully into physician_assignments
+2025-04-12 09:27:39,143 - INFO - Successfully loaded cleaned_data.csv
+2025-04-12 09:27:39,207 - INFO - Database connection established successfully.
+2025-04-12 09:27:39,391 - INFO - Data inserted successfully into patient_demographics
+2025-04-12 09:27:39,412 - INFO - Data inserted successfully into patient_visits
+2025-04-12 09:27:39,435 - INFO - Data inserted successfully into patient_lab_results
+2025-04-12 09:27:39,461 - INFO - Data inserted successfully into patient_medications
+2025-04-12 09:27:39,481 - INFO - Data inserted successfully into physician_assignments
+2025-04-12 12:21:40,186 - INFO - Successfully loaded cleaned_data.csv
+2025-04-12 12:21:40,462 - INFO - Database connection established successfully.
+2025-04-12 12:21:40,753 - INFO - Data inserted successfully into patient_demographics
+2025-04-12 12:21:40,775 - INFO - Data inserted successfully into patient_visits
+2025-04-12 12:21:40,796 - INFO - Data inserted successfully into patient_lab_results
+2025-04-12 12:21:40,819 - INFO - Data inserted successfully into patient_medications
+2025-04-12 12:21:40,842 - INFO - Data inserted successfully into physician_assignments
+2025-04-12 12:57:02,076 - INFO - Successfully loaded cleaned_data.csv
+2025-04-12 12:57:02,124 - INFO - Database connection established successfully.
+2025-04-12 12:57:02,288 - INFO - Data inserted successfully into patient_demographics
+2025-04-12 12:57:02,310 - INFO - Data inserted successfully into patient_visits
+2025-04-12 12:57:02,331 - INFO - Data inserted successfully into patient_lab_results
+2025-04-12 12:57:02,352 - INFO - Data inserted successfully into patient_medications
+2025-04-12 12:57:02,371 - INFO - Data inserted successfully into physician_assignments
+2025-04-12 18:15:07,662 - INFO - Successfully loaded cleaned_data.csv
+2025-04-12 18:15:07,730 - INFO - Database connection established successfully.
+2025-04-12 18:15:07,842 - INFO - Data inserted successfully into patient_demographics
+2025-04-12 18:15:07,856 - INFO - Data inserted successfully into patient_visits
+2025-04-12 18:15:07,867 - INFO - Data inserted successfully into patient_lab_results
+2025-04-12 18:15:07,877 - INFO - Data inserted successfully into patient_medications
+2025-04-12 18:15:07,885 - INFO - Data inserted successfully into physician_assignments

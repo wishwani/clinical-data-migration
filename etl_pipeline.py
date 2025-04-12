@@ -1,4 +1,3 @@
-from operator import index
 import pandas as pd
 import os
 import logging
@@ -51,22 +50,26 @@ def clean_data(data):
     
     for key, df in data.items():
         try:
-            
+            # Remove duplicate rows from the data
             df.drop_duplicates(inplace=True)
             logging.info(f"Removed duplicates in {key}")
 
+            # Assumption: If a "dosage" column exists, it contains values like '5mg' that need to be converted into float values in mg
             if "dosage" in df.columns:
                 df['dosage'] = df['dosage'].str.replace('mg', '', regex=False).astype(float)
-                df.rename(columns={'dosage': 'dosage_mg'}, inplace=True)
+                df.rename(columns={'dosage': 'dosage_mg'}, inplace=True) # Rename to 'dosage_mg'
 
+            # Assumption: Missing age values should be filled with the median age of that column
             if "age" in df.columns:
                 df["age"] = df["age"].fillna(df["age"].median()).astype(int)
 
             for index, row in df.iterrows():
 
+                # Normalize "result_unit" to uppercase if it exists
                 if "result_unit" in df.columns:
                     df["result_unit"] = df["result_unit"].str.upper()
 
+                # Assumption: If result_unit is "G/DL", update the unit and scale result_value by 1000
                 if "result_unit" in df.columns and "reference_range" in df.columns:
                     g_dl_condition = df["result_unit"] == "G/DL"
                     

@@ -4,11 +4,32 @@ import logging
 import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib_venn import venn2
+import logging
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
-# PostgreSQL and Supabase connection details
-POSTGRES_DB_URL = "postgresql://postgres:Randika@localhost:5432/clinical_data"  
-SUPABASE_DB_URL = "postgresql://postgres:postgres@127.0.0.1:54322/postgres" 
+# --- PostgreSQL ---
+POSTGRES_USER = os.getenv("POSTGRES_USER")
+POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+POSTGRES_HOST = os.getenv("POSTGRES_HOST")
+POSTGRES_PORT = os.getenv("POSTGRES_PORT")
+POSTGRES_DB = os.getenv("POSTGRES_DB")
+
+# Construct PostgreSQL connection string
+POSTGRES_DB_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+
+# --- Supabase ---
+SUPABASE_USER = os.getenv("SUPABASE_USER")
+SUPABASE_PASSWORD = os.getenv("SUPABASE_PASSWORD")
+SUPABASE_HOST = os.getenv("SUPABASE_HOST")
+SUPABASE_PORT = os.getenv("SUPABASE_PORT")
+SUPABASE_DB = os.getenv("SUPABASE_DB")
+
+# Construct Supabase connection string
+SUPABASE_DB_URL = f"postgresql://{SUPABASE_USER}:{SUPABASE_PASSWORD}@{SUPABASE_HOST}:{SUPABASE_PORT}/{SUPABASE_DB}"
 
 logging.basicConfig(
     filename='logs/data_migration_from_postgres_to_supabase.log',
@@ -91,10 +112,7 @@ def get_visits_per_patient():
         logging.error(f"Error getting visits per patient: {e}")
 
 # Filter patients by diagnosis
-def get_patients_by_diagnoise_visit_date_range():
-    diagnosis = 'DEPRESSION'
-    start_date = '2023-01-01'
-    end_date = '2023-12-31'
+def get_patients_by_diagnoise_visit_date_range(diagnosis, start_date, end_date):
     query = f"""
     SELECT patient_id, diagnosis, visit_date
     FROM patient_visits
@@ -110,10 +128,10 @@ def get_patients_by_diagnoise_visit_date_range():
 
         # Create sets of patient IDs for each group
         df['visit_date'] = pd.to_datetime(df['visit_date'], errors='coerce')
-        depression_patients = set(df[df['diagnosis'] == 'DEPRESSION']['patient_id'])
+        depression_patients = set(df[df['diagnosis'] == diagnosis]['patient_id'])
         visit_2023_patients = set(df[
-        (df['visit_date'] >= '2023-01-01') & 
-        (df['visit_date'] <= '2023-12-31')
+        (df['visit_date'] >= start_date) & 
+        (df['visit_date'] <= end_date)
         ]['patient_id'])
 
         # Venn diagram
@@ -212,7 +230,7 @@ if __name__ == '__main__':
         visits_per_patient_df = get_visits_per_patient()
         print(visits_per_patient_df)
 
-        patients_by_diagnoise_or_visit_date_range_df = get_patients_by_diagnoise_visit_date_range()
+        patients_by_diagnoise_or_visit_date_range_df = get_patients_by_diagnoise_visit_date_range('DEPRESSION', '2023-01-01', '2023-12-31')
         print(patients_by_diagnoise_or_visit_date_range_df)
         
         avg_visits_per_patient_df = get_avg_visits_per_patient()
