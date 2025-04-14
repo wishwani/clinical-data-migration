@@ -49,6 +49,7 @@ def load_data_to_table(table_name, columns, dtype, primary_keys=None):
 
         if primary_keys:
             data = data.dropna(subset=primary_keys)
+            data = data.drop_duplicates()
         
         data.to_sql(table_name, engine, if_exists='replace', index=False, dtype=dtype)
         logging.info(f"Data inserted successfully into {table_name}")

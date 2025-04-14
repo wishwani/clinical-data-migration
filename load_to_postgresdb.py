@@ -48,6 +48,7 @@ def load_data_to_table(table_name, columns, dtype_mapping, primary_keys=None):
         
         if primary_keys:
             data = data.dropna(subset=primary_keys)
+            data = data.drop_duplicates()
 
         # Insert data into the table
         data.to_sql(table_name, engine, if_exists='replace', index=False, dtype=dtype_mapping)

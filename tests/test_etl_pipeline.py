@@ -1,9 +1,10 @@
+from unittest.mock import patch
 import pytest
 import pandas as pd
 import os
-import load_to_postgresdb
 
 from etl_pipeline import load_data, clean_data, merge_data, modify_range
+from load_to_postgresdb import load_data_to_table
 
 # Test data setup
 test_data = {
@@ -55,17 +56,22 @@ test_data = {
     })
 }
 
+# Define fixture to be reused across tests
 @pytest.fixture
 def sample_data():
     return test_data.copy()
 
-# Test load_data function
+# ----------------------
+# Unit Tests -----------
+# ----------------------
+
+# Test whether load_data function returns all required DataFrames
 def test_load_data(mocker):
     mocker.patch("etl_pipeline.pd.read_csv", side_effect=lambda x: test_data[os.path.basename(x).split('.')[0]])
     data = load_data()
     assert set(data.keys()) == set(test_data.keys())
 
-# Test clean_data function
+# Test whether clean_data removes all nulls and normalizes gender values
 def test_clean_data(sample_data):
     cleaned_data = clean_data(sample_data)
     assert cleaned_data["patient_demographics"].isnull().sum().sum() == 0
@@ -96,45 +102,45 @@ def test_merge_data_missing_values(sample_data):
     assert set(merged_data["patient_id"]) == {'P1', 'P2', 'P3'}
     assert "visit_id" in merged_data.columns
 
-# Test insert function for patient_demographics
-def test_insert_patients_data(mocker):
-    mock_func = mocker.patch("load_to_postgresdb.load_data_to_patient_demographics", return_value=None)
-    load_to_postgresdb.load_data_to_patient_demographics(None, "patient_demographics", None)
-    mock_func.assert_called_once()
+# Test whether load_data_to_table internally calls to_sql correctly
+@patch("pandas.DataFrame.to_sql")
+def test_load_data_to_table_calls_to_sql(mock_to_sql):
+    mock_df = pd.DataFrame({
+        "patient_id": ["P1"],
+        "age": [30],
+        "age_group": ["18-35"],
+        "gender": ["F"],
+        "patient_demographics_other_fields": ["DATA"]
+    })
 
-# Test insert function patient_visits
-def test_insert_visits_data(mocker):
-    mock_func = mocker.patch("load_to_postgresdb.load_data_to_patient_visits", return_value=None)
-    load_to_postgresdb.load_data_to_patient_visits(None, "patient_visits", None)
-    mock_func.assert_called_once()
+    # Patch the global final_data used in load_to_postgresdb
+    with patch("load_to_postgresdb.final_data", mock_df):
+        table_name = "patient_demographics"
+        columns = ["patient_id", "age", "age_group", "gender", "patient_demographics_other_fields"]
+        dtypes = {
+            "patient_id": str,
+            "age": int,
+            "age_group": str,
+            "gender": str,
+            "patient_demographics_other_fields": str
+        }
 
-# Test insert function for patient_lab_results
-def test_insert_lab_results_data(mocker):
-    mock_func = mocker.patch("load_to_postgresdb.load_data_to_patient_lab_results", return_value=None)
-    load_to_postgresdb.load_data_to_patient_lab_results(None, "patient_lab_results", None)
-    mock_func.assert_called_once()
+        load_data_to_table(table_name, columns, dtypes, primary_keys=["patient_id"])
 
-# Test insert function for patient_medications
-def test_insert_medications_data(mocker):
-    mock_func = mocker.patch("load_to_postgresdb.load_data_to_patient_medications", return_value=None)
-    load_to_postgresdb.load_data_to_patient_medications(None, "patient_medications", None)
-    mock_func.assert_called_once()
-
-# Test insert function for physician_assignments
-def test_insert_physician_assignments_data(mocker):
-    mock_func = mocker.patch("load_to_postgresdb.load_data_to_physician_assignments", return_value=None)
-    load_to_postgresdb.load_data_to_physician_assignments(None, "physician_assignments", None)
-    mock_func.assert_called_once()
+        mock_to_sql.assert_called_once()
+        args, kwargs = mock_to_sql.call_args
+        assert kwargs["if_exists"] == "replace"
+        assert kwargs["index"] is False
+        assert kwargs["dtype"] == dtypes
 
 # Test result_unit conversion to uppercase
 def test_result_unit_uppercase():
     df = test_data["patient_lab_results"].copy()
-    if "result_unit" in df.columns:
-        df["result_unit"] = df["result_unit"].str.upper()
-    assert df["result_unit"].iloc[0] == "MG/DL"
-    assert df["result_unit"].iloc[1] == "MG/DL"
+    df["result_unit"] = df["result_unit"].str.upper()
+    df.loc[df["result_unit"] == "G/DL", "result_unit"] = "MG/DL"
+    assert all(df["result_unit"] == "MG/DL")
 
-# Test update of result_value, result_unit, and reference_range for "G/DL"
+# Test correct conversion of values and reference ranges for G/DL to MG/DL
 def test_update_g_dl_unit():
     df = test_data["patient_lab_results"].copy()
     if "result_unit" in df.columns and "reference_range" in df.columns:
@@ -146,39 +152,24 @@ def test_update_g_dl_unit():
     assert df["result_value"].iloc[0] == 15600  
     assert df["reference_range"].iloc[0] == "12000-16000" 
 
+# ----------------------
+# Lab Notes Logic Tests
+# ----------------------
+
 # Test notes update based on result_value and reference_range
 def test_update_notes():
     df = test_data["patient_lab_results"].copy()
     df["result_value"] = [1.7, 1.8]  
     df["reference_range"] = ["1.5-2.0", "1.5-2.0"] 
-    for index, row in df.iterrows():
-        if pd.notnull(row["result_value"]) and "reference_range" in df.columns:
-            min_range, max_range = map(float, row["reference_range"].split('-'))
-            if pd.isnull(row["patient_lab_results_notes"]):
-                if min_range <= row["result_value"] <= max_range:
-                    df.at[index, "patient_lab_results_notes"] = "NORMAL"
-                elif row["result_value"] < min_range:
-                    df.at[index, "patient_lab_results_notes"] = "LOW"
-                elif row["result_value"] > max_range:
-                    df.at[index, "patient_lab_results_notes"] = "HIGH"
-    assert df["patient_lab_results_notes"].iloc[0] == "NORMAL"
-    assert df["patient_lab_results_notes"].iloc[1] == "NORMAL"
+    df = apply_lab_notes(df)
+    assert all(df["patient_lab_results_notes"] == "NORMAL")
 
 # Test notes update for LOW result_value
 def test_update_notes_low():
     df = test_data["patient_lab_results"].copy()
     df["result_value"] = [0.7, 0.8]  
     df["reference_range"] = ["1.5-2.0", "1.5-2.0"] 
-    for index, row in df.iterrows():
-        if pd.notnull(row["result_value"]) and "reference_range" in df.columns:
-            min_range, max_range = map(float, row["reference_range"].split('-'))
-            if pd.isnull(row["patient_lab_results_notes"]):
-                if min_range <= row["result_value"] <= max_range:
-                    df.at[index, "patient_lab_results_notes"] = "NORMAL"
-                elif row["result_value"] < min_range:
-                    df.at[index, "patient_lab_results_notes"] = "LOW"
-                elif row["result_value"] > max_range:
-                    df.at[index, "patient_lab_results_notes"] = "HIGH"
+    df = apply_lab_notes(df)
     assert df["patient_lab_results_notes"].iloc[0] == "LOW"
 
 # Test notes update for HIGH result_value
@@ -186,6 +177,11 @@ def test_update_notes_high():
     df = test_data["patient_lab_results"].copy()
     df["result_value"] = [2.7, 2.8] 
     df["reference_range"] = ["1.5-2.0", "1.5-2.0"]  
+    df = apply_lab_notes(df)
+    assert df["patient_lab_results_notes"].iloc[0] == "HIGH"
+
+# Helper function to assign lab notes (NORMAL/LOW/HIGH) based on range
+def apply_lab_notes(df):
     for index, row in df.iterrows():
         if pd.notnull(row["result_value"]) and "reference_range" in df.columns:
             min_range, max_range = map(float, row["reference_range"].split('-'))
@@ -196,6 +192,9 @@ def test_update_notes_high():
                     df.at[index, "patient_lab_results_notes"] = "LOW"
                 elif row["result_value"] > max_range:
                     df.at[index, "patient_lab_results_notes"] = "HIGH"
-    assert df["patient_lab_results_notes"].iloc[0] == "HIGH"
+    return df
 
-
+# Ensure modify_range multiplies ranges by 1000
+def test_modify_range():
+    assert modify_range("12-16") == "12000-16000"
+    assert modify_range("10-20") == "10000-20000"

@@ -514,3 +514,52 @@ DROP TABLE patient_visits]
 2025-04-12 21:00:11,511 - INFO - Data inserted successfully into patient_lab_results
 2025-04-12 21:00:11,535 - INFO - Data inserted successfully into patient_medications
 2025-04-12 21:00:11,557 - INFO - Data inserted successfully into physician_assignments
+2025-04-13 09:16:29,337 - INFO - Successfully loaded cleaned_data.csv
+2025-04-13 09:16:29,394 - INFO - Database connection established successfully.
+2025-04-13 09:16:29,604 - INFO - Data inserted successfully into patient_demographics
+2025-04-13 09:16:29,629 - INFO - Data inserted successfully into patient_visits
+2025-04-13 09:16:29,653 - INFO - Data inserted successfully into patient_lab_results
+2025-04-13 09:16:29,676 - INFO - Data inserted successfully into patient_medications
+2025-04-13 09:16:29,698 - INFO - Data inserted successfully into physician_assignments
+2025-04-13 09:35:23,229 - INFO - Successfully loaded cleaned_data.csv
+2025-04-13 09:35:23,281 - INFO - Database connection established successfully.
+2025-04-13 09:35:23,283 - ERROR - Error inserting data into patient_demographics: 'patient_demographics'
+2025-04-13 09:35:23,283 - ERROR - Error inserting data into patient_visits: 'patient_visits'
+2025-04-13 09:35:23,283 - ERROR - Error inserting data into patient_lab_results: 'patient_lab_results'
+2025-04-13 09:35:23,283 - ERROR - Error inserting data into patient_medications: 'patient_medications'
+2025-04-13 09:35:23,283 - ERROR - Error inserting data into physician_assignments: 'physician_assignments'
+2025-04-13 09:36:58,600 - INFO - Successfully loaded cleaned_data.csv
+2025-04-13 09:36:58,639 - INFO - Database connection established successfully.
+2025-04-13 09:36:58,639 - ERROR - Error inserting data into patient_demographics: 'patient_demographics'
+2025-04-13 09:36:58,639 - ERROR - Error inserting data into patient_visits: 'patient_visits'
+2025-04-13 09:36:58,639 - ERROR - Error inserting data into patient_lab_results: 'patient_lab_results'
+2025-04-13 09:36:58,639 - ERROR - Error inserting data into patient_medications: 'patient_medications'
+2025-04-13 09:36:58,639 - ERROR - Error inserting data into physician_assignments: 'physician_assignments'
+2025-04-13 09:39:35,199 - INFO - Successfully loaded cleaned_data.csv
+2025-04-13 09:39:35,286 - INFO - Database connection established successfully.
+2025-04-13 09:39:35,558 - INFO - Data inserted successfully into patient_demographics
+2025-04-13 09:39:35,589 - INFO - Data inserted successfully into patient_visits
+2025-04-13 09:39:35,617 - INFO - Data inserted successfully into patient_lab_results
+2025-04-13 09:39:35,647 - INFO - Data inserted successfully into patient_medications
+2025-04-13 09:39:35,677 - INFO - Data inserted successfully into physician_assignments
+2025-04-14 10:20:18,473 - INFO - Successfully loaded cleaned_data.csv
+2025-04-14 10:20:18,531 - INFO - Database connection established successfully.
+2025-04-14 10:20:19,026 - INFO - Data inserted successfully into patient_demographics
+2025-04-14 10:20:19,054 - INFO - Data inserted successfully into patient_visits
+2025-04-14 10:20:19,081 - INFO - Data inserted successfully into patient_lab_results
+2025-04-14 10:20:19,105 - INFO - Data inserted successfully into patient_medications
+2025-04-14 10:20:19,131 - INFO - Data inserted successfully into physician_assignments
+2025-04-14 10:34:45,693 - INFO - Successfully loaded cleaned_data.csv
+2025-04-14 10:34:45,793 - INFO - Database connection established successfully.
+2025-04-14 10:34:46,072 - INFO - Data inserted successfully into patient_demographics
+2025-04-14 10:34:46,102 - INFO - Data inserted successfully into patient_visits
+2025-04-14 10:34:46,135 - INFO - Data inserted successfully into patient_lab_results
+2025-04-14 10:34:46,163 - INFO - Data inserted successfully into patient_medications
+2025-04-14 10:34:46,190 - INFO - Data inserted successfully into physician_assignments
+2025-04-14 11:18:16,837 - INFO - Successfully loaded cleaned_data.csv
+2025-04-14 11:18:16,922 - INFO - Database connection established successfully.
+2025-04-14 11:18:17,220 - INFO - Data inserted successfully into patient_demographics
+2025-04-14 11:18:17,250 - INFO - Data inserted successfully into patient_visits
+2025-04-14 11:18:17,279 - INFO - Data inserted successfully into patient_lab_results
+2025-04-14 11:18:17,306 - INFO - Data inserted successfully into patient_medications
+2025-04-14 11:18:17,335 - INFO - Data inserted successfully into physician_assignments

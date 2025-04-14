@@ -23,7 +23,7 @@ files = {
     "patient_medications": "patient_medications.csv"
 }
 
-# Function to modify range
+# Function to modify reference range format (e.g., "5-10" to "5000-10000")
 def modify_range(value):
     if isinstance(value, str) and '-' in value:
         start, end = value.split('-')
@@ -54,12 +54,12 @@ def clean_data(data):
             df.drop_duplicates(inplace=True)
             logging.info(f"Removed duplicates in {key}")
 
-            # Assumption: If a "dosage" column exists, it contains values like '5mg' that need to be converted into float values in mg
+            # Assumption: If a "dosage" column exists (e.g., "5mg"), strip the unit and convert to a numeric float in mg
             if "dosage" in df.columns:
                 df['dosage'] = df['dosage'].str.replace('mg', '', regex=False).astype(float)
                 df.rename(columns={'dosage': 'dosage_mg'}, inplace=True) # Rename to 'dosage_mg'
 
-            # Assumption: Missing age values should be filled with the median age of that column
+            # Assumption: Fill missing age values with the median and convert to integer
             if "age" in df.columns:
                 df["age"] = df["age"].fillna(df["age"].median()).astype(int)
 
@@ -69,7 +69,7 @@ def clean_data(data):
                 if "result_unit" in df.columns:
                     df["result_unit"] = df["result_unit"].str.upper()
 
-                # Assumption: If result_unit is "G/DL", update the unit and scale result_value by 1000
+                # Assumption: For "G/DL" units, convert result_value to "MG/DL" by multiplying by 1000; also update reference_range accordingly
                 if "result_unit" in df.columns and "reference_range" in df.columns:
                     g_dl_condition = df["result_unit"] == "G/DL"
                     
@@ -78,7 +78,7 @@ def clean_data(data):
                     df.loc[g_dl_condition, "result_unit"] = "MG/DL"
                     df.loc[g_dl_condition, "reference_range"] = df.loc[g_dl_condition, "reference_range"].apply(modify_range)
                 
-                # Update notes based on result_value and reference_range
+                # For patient_lab_results, set notes to "NORMAL", "LOW", or "HIGH" based on reference_range comparison
                 if key == "patient_lab_results" and pd.notnull(row["result_value"]) and "reference_range":
                     if pd.isnull(row["notes"]):
                         min_range, max_range = map(int, row["reference_range"].split("-"))
@@ -89,13 +89,16 @@ def clean_data(data):
                         elif row["result_value"] > max_range:
                            df.at[index, "notes"] = "HIGH"
 
+            # Convert date fields to standard format
             for date_column in ['test_date', 'start_date', 'end_date', 'assignment_date']:
                 if date_column in df.columns:
                     df[date_column] = pd.to_datetime(df[date_column], errors='coerce').dt.strftime('%Y-%m-%d')
             
+            # Assumption: Fill missing string values with "UNKNOWN" and convert to uppercase
             for col in df.select_dtypes(include=['object']).columns:
                 df[col] = df[col].fillna("UNKNOWN").str.upper()
 
+            # Assumption: Fill missing numeric values with placeholder -999
             for col in df.select_dtypes(include=['number']).columns:
                 df[col] = df[col].fillna(-999)
        
@@ -117,20 +120,28 @@ def merge_data(data):
         merged_data = merged_data.merge(data["patient_lab_results"], on=["patient_id", "visit_id"], how="left")
         merged_data = merged_data.merge(data["patient_medications"], on=["patient_id", "visit_id"], how="left")
         merged_data = merged_data.merge(data["physician_assignments"], on=["patient_id", "visit_id"], how="left")
-    
+
+        # Resolve column names conflicts from merge:
+        # Drop 'medication_x' from patient_visits and rename 'medication_y' to 'medication'
         if "medication_x" in merged_data.columns:
             merged_data = merged_data.drop(columns=["medication_x"]).rename(columns={"medication_y": "medication"})
+        
+        # Rename 'other_fields_x' to 'patient_demographics_other_fields'
+        # Rename 'other_fields_y' to 'patients_visits_other_fields'
         merged_data = merged_data.rename(columns={"other_fields_x": "patient_demographics_other_fields", "other_fields_y": "patients_visits_other_fields"})
+        
+        # Rename 'notes_x' to 'patient_lab_results_notes'
+        # Rename 'notes_y' to 'patient_medications_notes'
         merged_data = merged_data.rename(columns={"notes_x": "patient_lab_results_notes", "notes_y": "patient_medications_notes"})
         
-        # Merge age_group into merged data
+        # Derive 'age_group' column from 'age' values
         merged_data['age_group'] = merged_data['age'].apply(lambda x: '18-35' if x <= 35 else '36-65' if x <= 65 else '65+')
 
         # Calculate visit frequency per patient
         visit_counts = data["patient_visits"].groupby("patient_id")["visit_id"].count().reset_index()
         visit_counts.rename(columns={"visit_id": "visit_frequency"}, inplace=True)
 
-        # Merge visit frequency into merged data
+        # Derive 'visit frequency' column from calculated visit frequency 
         merged_data = merged_data.merge(visit_counts, on="patient_id", how="left")
         merged_data["visit_frequency"] = merged_data["visit_frequency"].fillna(0).astype(int)
 

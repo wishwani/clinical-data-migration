@@ -152,3 +152,24 @@
 2025-04-12 21:08:54,770 - INFO - Data inserted successfully into patient_lab_results
 2025-04-12 21:08:54,818 - INFO - Data inserted successfully into patient_medications
 2025-04-12 21:08:54,868 - INFO - Data inserted successfully into physician_assignments
+2025-04-13 10:51:31,020 - INFO - Successfully loaded cleaned_data.csv
+2025-04-13 10:51:31,067 - INFO - Connected to Supabase database successfully.
+2025-04-13 10:51:31,349 - INFO - Data inserted successfully into patient_demographics
+2025-04-13 10:51:31,438 - INFO - Data inserted successfully into patient_visits
+2025-04-13 10:51:31,524 - INFO - Data inserted successfully into patient_lab_results
+2025-04-13 10:51:31,594 - INFO - Data inserted successfully into patient_medications
+2025-04-13 10:51:31,667 - INFO - Data inserted successfully into physician_assignments
+2025-04-14 10:38:21,442 - INFO - Successfully loaded cleaned_data.csv
+2025-04-14 10:38:21,512 - INFO - Connected to Supabase database successfully.
+2025-04-14 10:38:21,945 - INFO - Data inserted successfully into patient_demographics
+2025-04-14 10:38:22,023 - INFO - Data inserted successfully into patient_visits
+2025-04-14 10:38:22,080 - INFO - Data inserted successfully into patient_lab_results
+2025-04-14 10:38:22,129 - INFO - Data inserted successfully into patient_medications
+2025-04-14 10:38:22,191 - INFO - Data inserted successfully into physician_assignments
+2025-04-14 11:52:44,869 - INFO - Successfully loaded cleaned_data.csv
+2025-04-14 11:52:44,961 - INFO - Connected to Supabase database successfully.
+2025-04-14 11:52:45,252 - INFO - Data inserted successfully into patient_demographics
+2025-04-14 11:52:45,320 - INFO - Data inserted successfully into patient_visits
+2025-04-14 11:52:45,376 - INFO - Data inserted successfully into patient_lab_results
+2025-04-14 11:52:45,430 - INFO - Data inserted successfully into patient_medications
+2025-04-14 11:52:45,484 - INFO - Data inserted successfully into physician_assignments
